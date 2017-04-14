@@ -1,0 +1,19 @@
+{
+  "source": "./",
+  "destination": "./www",
+  "plugins": {
+    "metalsmith-layouts": {
+      "engine": "handlebars",
+      "directory": "./src/html/page",
+      "partials": "./src/html/partial",
+      "default": "./src/index.html"
+    },
+    "metalsmith-ignore": [ "!html/*" ],
+    "metalsmith-in-place": {
+      "engine": "handlebars",
+      "directory": "./src/html/page",
+      "partials": "./src/html/partial"
+    },
+    "metalsmith-watch": {}
+  }
+}

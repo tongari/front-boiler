@@ -125,7 +125,7 @@ gulp.task('css', function () {
   return gulp.src(['./src/css/*.scss', './src/css/page/*.scss'])
     .pipe(postcss(processors))
     .pipe(rename(function (path) {
-      path.extname = ".css"       
+      path.extname = ".css"
     }))
     .pipe(gulp.dest('./dist/css/'));
 });
@@ -214,9 +214,6 @@ gulp.task('watch', function() { // src を監視
   gulp.watch('./src/css/**/*.scss', ['css']);
   gulp.watch('./src/**/*.html', ['metalsmith']);
 });
-
-
-
 
 
 /*

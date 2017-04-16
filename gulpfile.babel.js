@@ -127,7 +127,7 @@ gulp.task('js', () => {
 });
 
 // eslint
-let isWarning = false;
+// let isWarning = false;
 gulp.task('eslint', () => {
   return gulp.src(PATH.js)
     .pipe(plumber({

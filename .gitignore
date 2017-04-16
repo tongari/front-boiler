@@ -1,2 +1,7 @@
 node_modules
 dist
+front-boiler.iml
+.idea/misc.xml
+.idea/modules.xml
+.idea/vcs.xml
+.idea/workspace.xml

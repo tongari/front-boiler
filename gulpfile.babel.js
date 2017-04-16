@@ -9,13 +9,15 @@ import webpackStream from 'webpack-stream';
 import browserSync from 'browser-sync';
 import del from 'del';
 import path from 'path';
-
+import glob from 'glob';
+import spritesmith from 'gulp.spritesmith';
 
 const PATH = {
   src: './src',
   html: './src/html/**/*.html',
   css: './src/css/**/*.scss',
   js: './src/js/**/**.js',
+  sprite: './src/assets/**/sprite',
   dist: './dist'
 };
 
@@ -64,7 +66,7 @@ gulp.task('html', () => {
 
 //css
 gulp.task('css', () => {
-  return gulp.src(PATH.css)
+  return gulp.src([PATH.css,`!${PATH.css}/**/_sprite.scss`])
   .pipe(plumber({
     errorHandler: failNotifier()
   }))
@@ -76,7 +78,6 @@ gulp.task('css', () => {
 
 //server
 gulp.task('server', () => {
-  // noti();
   return browserSync.init({
     server: {
       baseDir: PATH.dist
@@ -147,8 +148,30 @@ gulp.task('eslint', () => {
 });
 
 
+gulp.task('sprite', () => {
+  return glob(PATH.sprite, (err, files) => {
+    files.map( (entry) => {
+      const spritePath = `${entry}/*.{png,jpg,gif}`;
+      const imgName = entry.replace('./src/assets/','').replace('sprite','sprite.png');
+      const cssName = entry.replace('./src/assets','css').replace('/sprite','/_sprite.scss');
+      const imgPath = `${entry.replace('./src/assets','/sprite')}.png`;
+      const spriteStream = gulp.src(spritePath).pipe(plumber()).pipe(spritesmith({
+        imgName: imgName,
+        cssName: cssName,
+        imgPath: imgPath,
+        algorithm: 'binary-tree',
+        cssFormat: 'scss',
+        padding: 4
+      }));
+      spriteStream.img.pipe(gulp.dest(`${PATH.dist}/sprite`));
+      spriteStream.css.pipe(gulp.dest(PATH.src));
+    });
+  });
+});
+
+
 // dev
-gulp.task('dev',['html', 'eslint', 'js', 'css', 'server'], () => {
+gulp.task('dev',['server', 'sprite', 'html', 'eslint', 'js', 'css'], () => {
 
   gulp.watch(PATH.html, ['html']);
   gulp.watch(PATH.css, ['css']);

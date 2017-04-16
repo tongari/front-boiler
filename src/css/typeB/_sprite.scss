@@ -1,0 +1,123 @@
+// SCSS variables are information about icon's compiled state, stored under its original file name
+//
+// .icon-home {
+//   width: $icon-home-width;
+// }
+//
+// The large array-like variables contain all information about a single icon
+// $icon-home: x y offset_x offset_y width height total_width total_height image_path;
+//
+// At the bottom of this section, we provide information about the spritesheet itself
+// $spritesheet: width height image $spritesheet-sprites;
+$icon-browser-name: 'icon_browser';
+$icon-browser-x: 260px;
+$icon-browser-y: 0px;
+$icon-browser-offset-x: -260px;
+$icon-browser-offset-y: 0px;
+$icon-browser-width: 64px;
+$icon-browser-height: 64px;
+$icon-browser-total-width: 324px;
+$icon-browser-total-height: 256px;
+$icon-browser-image: '/sprite/typeB/sprite.png';
+$icon-browser: (260px, 0px, -260px, 0px, 64px, 64px, 324px, 256px, '/sprite/typeB/sprite.png', 'icon_browser', );
+$icon-diamond-name: 'icon_diamond';
+$icon-diamond-x: 0px;
+$icon-diamond-y: 0px;
+$icon-diamond-offset-x: 0px;
+$icon-diamond-offset-y: 0px;
+$icon-diamond-width: 256px;
+$icon-diamond-height: 256px;
+$icon-diamond-total-width: 324px;
+$icon-diamond-total-height: 256px;
+$icon-diamond-image: '/sprite/typeB/sprite.png';
+$icon-diamond: (0px, 0px, 0px, 0px, 256px, 256px, 324px, 256px, '/sprite/typeB/sprite.png', 'icon_diamond', );
+$icon-search-name: 'icon_search';
+$icon-search-x: 260px;
+$icon-search-y: 68px;
+$icon-search-offset-x: -260px;
+$icon-search-offset-y: -68px;
+$icon-search-width: 64px;
+$icon-search-height: 64px;
+$icon-search-total-width: 324px;
+$icon-search-total-height: 256px;
+$icon-search-image: '/sprite/typeB/sprite.png';
+$icon-search: (260px, 68px, -260px, -68px, 64px, 64px, 324px, 256px, '/sprite/typeB/sprite.png', 'icon_search', );
+$icon-storage-name: 'icon_storage';
+$icon-storage-x: 260px;
+$icon-storage-y: 136px;
+$icon-storage-offset-x: -260px;
+$icon-storage-offset-y: -136px;
+$icon-storage-width: 64px;
+$icon-storage-height: 64px;
+$icon-storage-total-width: 324px;
+$icon-storage-total-height: 256px;
+$icon-storage-image: '/sprite/typeB/sprite.png';
+$icon-storage: (260px, 136px, -260px, -136px, 64px, 64px, 324px, 256px, '/sprite/typeB/sprite.png', 'icon_storage', );
+$spritesheet-width: 324px;
+$spritesheet-height: 256px;
+$spritesheet-image: '/sprite/typeB/sprite.png';
+$spritesheet-sprites: ($icon-browser, $icon-diamond, $icon-search, $icon-storage, );
+$spritesheet: (324px, 256px, '/sprite/typeB/sprite.png', $spritesheet-sprites, );
+
+// The provided mixins are intended to be used with the array-like variables
+//
+// .icon-home {
+//   @include sprite-width($icon-home);
+// }
+//
+// .icon-email {
+//   @include sprite($icon-email);
+// }
+//
+// Example usage in HTML:
+//
+// `display: block` sprite:
+// <div class="icon-home"></div>
+//
+// To change `display` (e.g. `display: inline-block;`), we suggest using a common CSS class:
+//
+// // CSS
+// .icon {
+//   display: inline-block;
+// }
+//
+// // HTML
+// <i class="icon icon-home"></i>
+@mixin sprite-width($sprite) {
+  width: nth($sprite, 5);
+}
+
+@mixin sprite-height($sprite) {
+  height: nth($sprite, 6);
+}
+
+@mixin sprite-position($sprite) {
+  $sprite-offset-x: nth($sprite, 3);
+  $sprite-offset-y: nth($sprite, 4);
+  background-position: $sprite-offset-x  $sprite-offset-y;
+}
+
+@mixin sprite-image($sprite) {
+  $sprite-image: nth($sprite, 9);
+  background-image: url(#{$sprite-image});
+}
+
+@mixin sprite($sprite) {
+  @include sprite-image($sprite);
+  @include sprite-position($sprite);
+  @include sprite-width($sprite);
+  @include sprite-height($sprite);
+}
+
+// The `sprites` mixin generates identical output to the CSS template
+//   but can be overridden inside of SCSS
+//
+// @include sprites($spritesheet-sprites);
+@mixin sprites($sprites) {
+  @each $sprite in $sprites {
+    $sprite-name: nth($sprite, 10);
+    .#{$sprite-name} {
+      @include sprite($sprite);
+    }
+  }
+}

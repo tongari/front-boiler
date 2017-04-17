@@ -49,21 +49,22 @@ const failNotifier = () => (
   })
 );
 
-const esLintWarning = () => (
-  notify({
+const esLintWarning = () => {
+  if(isDev()) return ( ()=>{} );
+  return notify({
     title: 'eslint Warning!!',
     sound: 'Submarine',
     icon: path.join(__dirname, '/system/notifier/caution.png')
   })
-);
+};
 
-// all clean
-gulp.task('allClean', ()=>{
+//clean
+gulp.task('clean', ()=>{
   del(`${PATH.dist}/**`);
 });
 
-//clean
-gulp.task('clean', () => {
+//customClean
+gulp.task('customClean', () => {
   return glob(`${PATH.dist}/**`, (err, files) => {
     files.forEach( (entry) => {
       if ( /.\/dist\/sprite/.test(entry) || entry === './dist') {
@@ -91,17 +92,14 @@ gulp.task('css', () => {
   .pipe(plumber({
     errorHandler: failNotifier()
   }))
-  .pipe(sourcemaps.init())
-  // .pipe(gulpif(isDev(), sourcemaps.init()))
+  .pipe(gulpif(isDev(), sourcemaps.init()))
   .pipe(sass())
   .pipe(cssnano({
     autoprefixer: {browsers: ['ie >= 9', 'Android >= 4.1', 'last 2 versions'], add: true}
   }))
-  .pipe(sourcemaps.write('.'))
-  // .pipe(gulpif(isDev(), sourcemaps.write('.')))
+  .pipe(gulpif(isDev(), sourcemaps.write('.')))
   .pipe(gulp.dest(`${PATH.dist}/css`))
-  .pipe(browserSync.stream())
-  // .pipe(gulpif(isDev(),browserSync.stream()))
+  .pipe(gulpif(isDev(),browserSync.stream()))
   // .pipe(sucessNotifier());
 });
 
@@ -130,7 +128,7 @@ gulp.task('js', () => {
       output: {
         filename: '[name].js'
       },
-      watch: isDev(),
+      // watch: isDev(),
       module: {
         rules: [
           {
@@ -153,8 +151,7 @@ gulp.task('js', () => {
       ]
     }, webpack))
     .pipe(gulp.dest(`${PATH.dist}/js`))
-    .pipe(browserSync.stream())
-    // .pipe(gulpif(isDev(),browserSync.stream()))
+    .pipe(gulpif(isDev(),browserSync.stream()))
     // .pipe(sucessNotifier());
 });
 
@@ -175,7 +172,7 @@ gulp.task('eslint', () => {
     //     isWarning = false;
     //   }
     // }))
-    // .pipe( gulpif( !isDev(),  esLintWarning() ) )
+    // .pipe( gulpif(isWarning ,esLintWarning()) )
 });
 
 
@@ -218,7 +215,9 @@ gulp.task('dev',['server', 'copy', 'html', 'css', 'eslint', 'js'], () => {
 gulp.task('prod', ( callback ) => {
   return runSequence(
     'clean',
-    ['html', 'eslint', 'js', 'css'],
+    'copy',
+    'eslint',
+    ['html', 'js', 'css'],
     callback
   );
 });

@@ -1,3 +1,4 @@
 node_modules/
 gulpfile.babel.js
 dist/
+*.js.map

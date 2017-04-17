@@ -10,7 +10,6 @@
     "prod": "NODE_ENV=prod yarn gulp prod",
     "dev": "NODE_ENV=dev yarn gulp dev",
     "clean": "yarn gulp clean",
-    "allClean": "yarn gulp allClean",
     "eslint": "yarn gulp eslint",
     "sprite": "yarn gulp sprite"
   },

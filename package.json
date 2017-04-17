@@ -8,7 +8,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "prod": "NODE_ENV=prod yarn gulp prod",
-    "dev": "NODE_ENV=dev yarn run gulp js & yarn gulp dev",
+    "dev": "NODE_ENV=dev yarn gulp dev",
     "clean": "yarn gulp clean",
     "allClean": "yarn gulp allClean",
     "eslint": "yarn gulp eslint",

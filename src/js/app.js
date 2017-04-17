@@ -1,4 +1,4 @@
 import wait from './domain/utils/wait';
 
 wait();
-console.log('hit!!!');
+console.log('app');

@@ -130,7 +130,7 @@ gulp.task('js', () => {
       output: {
         filename: '[name].js'
       },
-      // watch: isDev(),
+      watch: isDev(),
       module: {
         rules: [
           {
@@ -208,8 +208,7 @@ gulp.task('copy', () => {
 
 
 // dev
-gulp.task('dev',['server', 'copy', 'html', 'eslint', 'js', 'css'], () => {
-
+gulp.task('dev',['server', 'copy', 'html', 'css', 'eslint', 'js'], () => {
   gulp.watch(PATH.html, ['html']);
   gulp.watch(PATH.css, ['css']);
   gulp.watch([PATH.js], ['eslint', 'js']);

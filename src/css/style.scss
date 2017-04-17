@@ -54,3 +54,12 @@ body {
     @include r-sprite($icon-diamond);
   }
 }
+
+.flex{
+  display: flex;
+  border: 1px solid;
+  &__half{
+    flex-basis: 50%;
+  }
+}
+

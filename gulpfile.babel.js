@@ -4,13 +4,19 @@ import sass from 'gulp-sass';
 import eslint from 'gulp-eslint';
 import gulpif from 'gulp-if';
 import notify from 'gulp-notify';
+import cssnano from 'gulp-cssnano';
+import spritesmith from 'gulp.spritesmith';
+
 import webpack from 'webpack';
 import webpackStream from 'webpack-stream';
 import browserSync from 'browser-sync';
+
 import del from 'del';
 import path from 'path';
 import glob from 'glob';
-import spritesmith from 'gulp.spritesmith';
+
+import sourcemaps from'gulp-sourcemaps';
+
 
 const PATH = {
   src: './src',
@@ -70,7 +76,12 @@ gulp.task('css', () => {
   .pipe(plumber({
     errorHandler: failNotifier()
   }))
+  .pipe(sourcemaps.init())
   .pipe(sass())
+  .pipe(cssnano({
+    autoprefixer: {browsers: ['ie >= 9', 'Android >= 4.1', 'last 2 versions'], add: true}
+  }))
+  .pipe(sourcemaps.write('.'))
   .pipe(gulp.dest(`${PATH.dist}/css`))
   .pipe(browserSync.stream())
   // .pipe(sucessNotifier());
@@ -118,7 +129,7 @@ gulp.task('js', () => {
       devtool: 'source-map',
       plugins: [
         new webpack.optimize.UglifyJsPlugin({
-          sourceMap: false
+          sourceMap: true
         })
       ]
     }, webpack))

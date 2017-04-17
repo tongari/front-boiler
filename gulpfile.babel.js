@@ -16,6 +16,7 @@ import path from 'path';
 import glob from 'glob';
 
 import sourcemaps from'gulp-sourcemaps';
+import runSequence from 'run-sequence';
 
 
 const PATH = {
@@ -26,6 +27,9 @@ const PATH = {
   sprite: './src/assets/**/sprite',
   dist: './dist'
 };
+
+
+const isDev = () => (process.env.NODE_ENV === 'dev');
 
 
 const sucessNotifier = () => (
@@ -53,10 +57,21 @@ const esLintWarning = () => (
   })
 );
 
+// all clean
+gulp.task('allClean', ()=>{
+  del(`${PATH.dist}/**`);
+});
 
 //clean
 gulp.task('clean', () => {
-  del(`${PATH.dist}/**`);
+  return glob(`${PATH.dist}/**`, (err, files) => {
+    files.forEach( (entry) => {
+      if ( /.\/dist\/sprite/.test(entry) || entry === './dist') {
+        return;
+      }
+      del(entry);
+    });
+  });
 });
 
 //html
@@ -66,23 +81,27 @@ gulp.task('html', () => {
       errorHandler: failNotifier()
     }))
     .pipe(gulp.dest(PATH.dist))
-    .pipe(browserSync.stream())
+    .pipe(gulpif(isDev(),browserSync.stream()))
     // .pipe(sucessNotifier());
 });
 
 //css
 gulp.task('css', () => {
+
+  console.log(isDev());
+
   return gulp.src([PATH.css,`!${PATH.css}/**/_sprite.scss`])
   .pipe(plumber({
     errorHandler: failNotifier()
   }))
-  .pipe(sourcemaps.init())
+  // .pipe(gulpif(isDev(), sourcemaps.init()))
   .pipe(sass())
   .pipe(cssnano({
     autoprefixer: {browsers: ['ie >= 9', 'Android >= 4.1', 'last 2 versions'], add: true}
   }))
-  .pipe(sourcemaps.write('.'))
+  // .pipe(gulpif(isDev(), sourcemaps.write('.')))
   .pipe(gulp.dest(`${PATH.dist}/css`))
+  // .pipe(gulpif(isDev(),browserSync.stream()))
   .pipe(browserSync.stream())
   // .pipe(sucessNotifier());
 });
@@ -98,7 +117,8 @@ gulp.task('server', () => {
 
 // js
 gulp.task('js', () => {
-  gulp.src([])
+
+  return gulp.src([])
     .pipe(plumber({
       errorHandler: failNotifier()
     }))
@@ -111,7 +131,7 @@ gulp.task('js', () => {
       output: {
         filename: '[name].js'
       },
-      watch: true,
+      watch: isDev(),
       module: {
         rules: [
           {
@@ -129,17 +149,17 @@ gulp.task('js', () => {
       devtool: 'source-map',
       plugins: [
         new webpack.optimize.UglifyJsPlugin({
-          sourceMap: true
+          sourceMap: isDev()
         })
       ]
     }, webpack))
     .pipe(gulp.dest(`${PATH.dist}/js`))
-    .pipe(browserSync.stream())
+    .pipe(gulpif(isDev(),browserSync.stream()))
     // .pipe(sucessNotifier());
 });
 
 // eslint
-// let isWarning = false;
+let isWarning = false;
 gulp.task('eslint', () => {
   return gulp.src(PATH.js)
     .pipe(plumber({
@@ -148,14 +168,14 @@ gulp.task('eslint', () => {
     .pipe(eslint())
     .pipe(eslint.format())
     .pipe(eslint.failAfterError())
-    // .pipe(eslint.result( (result) => {
-    //   if(result.warningCount !== 0) {
-    //     isWarning = true;
-    //   } else {
-    //     isWarning = false;
-    //   }
-    // }))
-    // .pipe(gulpif(isWarning, esLintWarning()))
+    .pipe(eslint.result( (result) => {
+      if(result.warningCount !== 0) {
+        isWarning = true;
+      } else {
+        isWarning = false;
+      }
+    }))
+    // .pipe( gulpif( !isDev(),  esLintWarning() ) )
 });
 
 
@@ -165,7 +185,7 @@ gulp.task('sprite', () => {
       const spritePath = `${entry}/*.{png,jpg,gif}`;
       const imgName = entry.replace('./src/assets/','').replace('sprite','sprite.png');
       const cssName = entry.replace('./src/assets','css').replace('/sprite','/_sprite.scss');
-      const imgPath = `${entry.replace('./src/assets','/sprite')}.png`;
+      const imgPath = `${entry.replace('./src/assets','/sprite')}.png?${Date.now()}`;
       const spriteStream = gulp.src(spritePath).pipe(plumber()).pipe(spritesmith({
         imgName: imgName,
         cssName: cssName,
@@ -182,9 +202,21 @@ gulp.task('sprite', () => {
 
 
 // dev
-gulp.task('dev',['server', 'sprite', 'html', 'eslint', 'js', 'css'], () => {
+gulp.task('dev',['server', 'html', 'css', 'eslint'], () => {
+// gulp.task('dev',['server', 'html', 'css'], () => {
 
   gulp.watch(PATH.html, ['html']);
   gulp.watch(PATH.css, ['css']);
   gulp.watch([PATH.js], ['eslint']);
 });
+
+// prod
+gulp.task('prod', ( callback ) => {
+  return runSequence(
+    'clean',
+    ['html', 'eslint', 'js', 'css'],
+    callback
+  );
+});
+
+

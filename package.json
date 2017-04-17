@@ -7,15 +7,10 @@
   "license": "MIT",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "js:prod": "webpack --progress --optimize-minimize",
-    "js:dev": "webpack --progress --watch",
-    "css:dev": "node-sass ./src/css/style.scss ./dist/css/style.css --watch",
-    "css:prod": "node-sass ./src/css/style.scss ./dist/css/style.css --output-style compressed",
-    "watch": "yarn css:dev & yarn js:dev",
-    "server": "browser-sync start --config bs-config.js",
-    "prod": "NODE_ENV=prod yarn deploy",
-    "dev": "yarn gulp dev",
+    "prod": "NODE_ENV=prod yarn gulp prod",
+    "dev": "NODE_ENV=dev yarn run gulp js & yarn gulp dev",
     "clean": "yarn gulp clean",
+    "allClean": "yarn gulp allClean",
     "eslint": "yarn gulp eslint",
     "sprite": "yarn gulp sprite"
   },
@@ -43,6 +38,7 @@
     "gulp-sass": "^3.1.0",
     "gulp-sourcemaps": "^2.6.0",
     "gulp.spritesmith": "^6.4.0",
+    "run-sequence": "^1.2.2",
     "webpack": "^2.4.1",
     "webpack-stream": "^3.2.0"
   }

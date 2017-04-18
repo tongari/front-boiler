@@ -1,0 +1,14 @@
+{
+  "source": "./src/html/page",
+  "destination": "./dist",
+  "plugins": {
+    "metalsmith-layouts": {
+      "engine": "handlebars",
+      "directory": "./src/html/layout",
+      "partials": "partial",
+      "default": "default.html"
+    },
+    "metalsmith-ignore": [ "!html/*" ],
+    "metalsmith-watch": {}
+  }
+}

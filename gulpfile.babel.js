@@ -18,6 +18,12 @@ import glob from 'glob';
 import sourcemaps from'gulp-sourcemaps';
 import runSequence from 'run-sequence';
 
+// static page generator
+const metalsmith = require('gulp-metalsmith');
+const metalsmithLayout = require('metalsmith-layouts');
+const metalsmithInplace = require('metalsmith-in-place');
+// import handlebars from 'handlebars';
+
 
 const PATH = {
   src: './src',
@@ -76,15 +82,56 @@ gulp.task('customClean', () => {
 });
 
 //html
+// gulp.task('html', () => {
+//   return gulp.src(PATH.html)
+//     .pipe(plumber({
+//       errorHandler: failNotifier()
+//     }))
+//     .pipe(gulp.dest(PATH.dist))
+//     .pipe(browserSync.stream())
+//     // .pipe(sucessNotifier());
+// });
+
+// static page generator
 gulp.task('html', () => {
-  return gulp.src(PATH.html)
-    .pipe(plumber({
-      errorHandler: failNotifier()
+  return gulp.src('src/html/page/**/*.html')
+    .pipe(metalsmith({
+
+      // // Metalsmith's root directory, for example for locating templates, defaults to CWD
+      // root: './',
+      // // Files to exclude from the build
+      // ignore: ['src/*.tmp'],
+      // // Initial Metalsmith metadata, defaults to {}
+      // metadata: {
+      //   site_title: 'Sample static site'
+      // },
+      // // List of JSON files that contain page definitions
+      // // true means "all JSON files", see the section below
+      // json: ['src/pages.json']
+
+      frontmatter: true,
+      use: [
+        metalsmithLayout({
+          engine: 'handlebars',
+          "directory": "./src/html/layout",
+          "partials": "./src/html/partial",
+          "default": "default.html",
+          // }),
+          // metalsmithPartial({
+          //   'directory': './src/html/partial'
+          // }),
+          // metalsmithTemplates({
+          //   'engine': 'eco',
+          //   'inPlace': true
+        }),
+        metalsmithInplace({
+          engine: "handlebars"
+        })
+      ]
     }))
-    .pipe(gulp.dest(PATH.dist))
-    .pipe(browserSync.stream())
-    // .pipe(sucessNotifier());
+    .pipe(gulp.dest('./dist'));
 });
+
 
 //css
 gulp.task('css', () => {

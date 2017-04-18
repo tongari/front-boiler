@@ -11,7 +11,9 @@
     "dev": "NODE_ENV=dev yarn gulp dev",
     "clean": "yarn gulp clean",
     "eslint": "yarn gulp eslint",
-    "sprite": "yarn gulp sprite"
+    "sprite": "yarn gulp sprite",
+    "html": "yarn gulp html",
+    "ms": "yarn run metalsmith"
   },
   "devDependencies": {
     "babel-core": "^6.24.1",
@@ -32,11 +34,19 @@
     "gulp-cssnano": "^2.1.2",
     "gulp-eslint": "^3.0.1",
     "gulp-if": "^2.0.2",
+    "gulp-metalsmith": "^1.1.0",
     "gulp-notify": "^3.0.0",
     "gulp-plumber": "^1.1.0",
     "gulp-sass": "^3.1.0",
     "gulp-sourcemaps": "^2.6.0",
     "gulp.spritesmith": "^6.4.0",
+    "handlebars": "^4.0.6",
+    "metalsmith": "^2.3.0",
+    "metalsmith-ignore": "^0.1.2",
+    "metalsmith-in-place": "^2.0.1",
+    "metalsmith-layouts": "^1.8.0",
+    "metalsmith-partial": "^0.1.0",
+    "metalsmith-watch": "^1.0.3",
     "run-sequence": "^1.2.2",
     "webpack": "^2.4.1",
     "webpack-stream": "^3.2.0"

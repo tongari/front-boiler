@@ -12,8 +12,7 @@
     "clean": "yarn gulp clean",
     "eslint": "yarn gulp eslint",
     "sprite": "yarn gulp sprite",
-    "html": "yarn gulp html",
-    "ms": "yarn run metalsmith"
+    "html": "yarn gulp html"
   },
   "devDependencies": {
     "babel-core": "^6.24.1",

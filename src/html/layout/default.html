@@ -10,9 +10,10 @@
 
 <body>
   {{> header }}
-
   {{{ contents }}}
-
   {{> footer }}
+  {{# each jsSrc}}
+  {{{this}}}
+  {{/each}}
 </body>
 </html>

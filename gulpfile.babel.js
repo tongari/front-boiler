@@ -1,28 +1,24 @@
 import gulp from 'gulp';
 import plumber from 'gulp-plumber';
-import sass from 'gulp-sass';
-import eslint from 'gulp-eslint';
 import gulpif from 'gulp-if';
 import notify from 'gulp-notify';
-import cssnano from 'gulp-cssnano';
-import spritesmith from 'gulp.spritesmith';
-
-import webpack from 'webpack';
-import webpackStream from 'webpack-stream';
-import browserSync from 'browser-sync';
-
 import del from 'del';
 import path from 'path';
 import glob from 'glob';
-
+import browserSync from 'browser-sync';
 import sourcemaps from'gulp-sourcemaps';
 import runSequence from 'run-sequence';
 
-// static page generator
 import metalsmith from 'gulp-metalsmith';
 import metalsmithLayout from 'metalsmith-layouts';
-//import metalsmithInplace from 'metalsmith-in-place';
 
+import sass from 'gulp-sass';
+import spritesmith from 'gulp.spritesmith';
+import cssnano from 'gulp-cssnano';
+
+import webpack from 'webpack';
+import webpackStream from 'webpack-stream';
+import eslint from 'gulp-eslint';
 
 const PATH = {
   src: './src',
@@ -33,9 +29,7 @@ const PATH = {
   dist: './dist'
 };
 
-
 const isDev = () => (process.env.NODE_ENV === 'dev');
-
 
 const sucessNotifier = () => (
   notify({
@@ -55,7 +49,6 @@ const failNotifier = () => (
 );
 
 const esLintWarning = () => {
-  if(isDev()) return ( ()=>{} );
   return notify({
     title: 'eslint Warning!!',
     sound: 'Submarine',
@@ -68,34 +61,14 @@ gulp.task('clean', ()=>{
   del(`${PATH.dist}/**`);
 });
 
-//customClean
-gulp.task('customClean', () => {
-  return glob(`${PATH.dist}/**`, (err, files) => {
-    files.forEach( (entry) => {
-      if ( /.\/dist\/sprite/.test(entry) || entry === './dist') {
-        return;
-      }
-      del(entry);
-    });
-  });
-});
 
 //html
-// gulp.task('html', () => {
-//   return gulp.src(PATH.html)
-//     .pipe(plumber({
-//       errorHandler: failNotifier()
-//     }))
-//     .pipe(gulp.dest(PATH.dist))
-//     .pipe(browserSync.stream())
-//     // .pipe(sucessNotifier());
-// });
-
-// static page generator
 gulp.task('html', () => {
   return gulp.src('src/html/page/**/*.html')
+    .pipe(plumber({
+      errorHandler: failNotifier()
+    }))
     .pipe(metalsmith({
-
       root: './src/html/',
       frontmatter: true,
       use: [
@@ -104,17 +77,7 @@ gulp.task('html', () => {
           "directory": "layout",
           "partials": "partial",
           "default": "default.html"
-        }),
-          // metalsmithPartial({
-          //   'directory': './src/html/partial'
-          // }),
-          // metalsmithTemplates({
-          //   'engine': 'eco',
-          //   'inPlace': true
-        // })
-        // metalsmithInplace({
-        //   engine: "handlebars"
-        // })
+        })
       ]
     }))
     .pipe(gulp.dest('./dist'))
@@ -131,7 +94,7 @@ gulp.task('css', () => {
   .pipe(gulpif(isDev(), sourcemaps.init()))
   .pipe(sass())
   .pipe(cssnano({
-    autoprefixer: {browsers: ['ie >= 9', 'Android >= 4.1', 'last 2 versions'], add: true}
+    autoprefixer: {browsers: ['ie >= 11', 'Android >= 4.1', 'last 2 versions'], add: true}
   }))
   .pipe(gulpif(isDev(), sourcemaps.write('.')))
   .pipe(gulp.dest(`${PATH.dist}/css`))
@@ -144,7 +107,8 @@ gulp.task('server', () => {
   return browserSync.init({
     server: {
       baseDir: PATH.dist
-    }
+    },
+    port: 9000
   })
 })
 
@@ -208,10 +172,10 @@ gulp.task('eslint', () => {
     //     isWarning = false;
     //   }
     // }))
-    // .pipe( gulpif(isWarning ,esLintWarning()) )
+    // .pipe( gulpif(!isDev() ,gulpif(isWarning, esLintWarning())) )
 });
 
-
+//sprite
 gulp.task('sprite', () => {
   return glob(PATH.sprite, (err, files) => {
     files.map( (entry) => {
@@ -257,5 +221,3 @@ gulp.task('prod', ( callback ) => {
     callback
   );
 });
-
-

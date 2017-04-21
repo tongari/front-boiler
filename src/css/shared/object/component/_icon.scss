@@ -1,0 +1,18 @@
+@import "../../sprite/typeA/sprite";
+
+.c-icon {
+  display: inline-block;
+  vertical-align: middle;
+
+  &#{&}--search{
+    @include f-sprite($icon-search);
+  }
+
+  &#{&}--browser{
+    @include f-sprite($icon-browser);
+  }
+
+  &#{&}--diamond{
+    @include f-sprite($icon-diamond);
+  }
+}

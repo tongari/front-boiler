@@ -1,0 +1,39 @@
+.u-text {
+
+  &-size-XS {
+    font-size: $f-font-size-XS;
+  }
+  &-size-S {
+    font-size: $f-font-size-S;
+  }
+  &-size-M {
+    font-size: $f-font-size-M;
+  }
+  &-size-L {
+    font-size: $f-font-size-L;
+  }
+  &-size-LL {
+    font-size: $f-font-size-LL;
+  }
+  &-size-XL {
+    font-size: $f-font-size-XL;
+  }
+
+  &-underline {
+    text-decoration: underline;
+  }
+
+  &-bold {
+    font-weight: bold;
+  }
+
+  &-left {
+    text-align: left;
+  }
+  &-center {
+    text-align: center;
+  }
+  &-right {
+    text-align: right;
+  }
+}

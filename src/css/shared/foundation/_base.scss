@@ -1,0 +1,38 @@
+/*----------------------------------
+Base style
+----------------------------------*/
+
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+html{
+  font-size: 62.5%;
+  line-height: $f-line-height-M;
+}
+
+body{
+  font-family: 'ヒラギノ角ゴ Pro W3', 'Hiragino Kaku Gothic Pro',"メイリオ", Meiryo, Osaka, 'ＭＳ Ｐゴシック', 'MS PGothic', sans-serif;
+  font-size: $f-font-size-M;
+  text-size-adjust: 100%;
+  line-height: $f-line-height-M;
+
+  //&.lang-en{
+  //  font-size: $f-font-size-M;
+  //}
+  //
+  //&.lang-ja{
+  //  font-size: $f-font-size-S;
+  //}
+
+}
+
+a{
+  text-decoration: none;
+  color: $f-default-text-color;
+}
+
+
+h1, h2, h3, h4, h5, h6,strong {
+  font-weight: normal;
+}

@@ -1,0 +1,37 @@
+.c-typography {
+
+  &#{&}--XS {
+    font-size: $f-font-size-XS;
+    line-height: $f-line-height-XS;
+  }
+
+  &#{&}--S {
+    font-size: $f-font-size-S;
+    line-height: $f-line-height-S;
+  }
+
+  //&#{&}--M {
+  //  font-size: $f-font-size-M;
+  //  line-height: $f-line-height-M;
+  //}
+
+  &#{&}--L {
+    font-size: $f-font-size-L;
+    line-height: $f-line-height-L;
+  }
+
+  &#{&}--LL {
+    font-size: $f-font-size-LL;
+    line-height: $f-line-height-LL;
+  }
+
+  &#{&}--XL {
+    font-size: $f-font-size-XL;
+    line-height: $f-line-height-XL;
+  }
+
+  &#{&}--bold {
+    font-weight: bold;
+  }
+
+}

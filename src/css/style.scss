@@ -1,60 +1,48 @@
 @charset "UTF-8";
-@import "typeA/sprite";
 
-/**
------------------------------------------------------------------------------------------------
- */
-@mixin r-sprite-width($sprite){
-  width: nth($sprite,5)/2;
-}
+//==========================================================================
+// Foundation
+// ==========================================================================
 
-@mixin r-sprite-height($sprite){
-  height: nth($sprite,6)/2;
-}
+@import "shared/foundation/config";
+@import "shared/foundation/reset";
+@import "shared/foundation/mixin";
+@import "shared/foundation/base";
 
-@mixin r-sprite-position($sprite){
-  $sprite-offset-x: nth($sprite,3)/2;
-  $sprite-offset-y: nth($sprite,4)/2;
-  background-position: $sprite-offset-x $sprite-offset-y;
-}
 
-@mixin r-sprite-size($sprite){
-  background-size: nth($sprite,7)/2 nth($sprite,8)/2;
-}
+// ==========================================================================
+// Object
+// ==========================================================================
 
-@mixin r-sprite($sprite){
-  @include sprite-image($sprite);
-  @include r-sprite-position($sprite);
-  @include r-sprite-width($sprite);
-  @include r-sprite-height($sprite);
-  @include r-sprite-size($sprite);
-}
+  // -----------------------------------------------------------------
+  // Component
+  // -----------------------------------------------------------------
 
-/**
------------------------------------------------------------------------------------------------
- */
+  @import "shared/object/component/icon";
+  @import "shared/object/component/typography";
+  @import "shared/object/component/group";
+  @import "shared/object/component/button";
 
-body {
-  background-color: rgba(0, 0, 0,.2)
-}
 
-.c-icon {
-  display: inline-block;
-  vertical-align: middle;
+  // -----------------------------------------------------------------
+  // Project
+  // -----------------------------------------------------------------
+  @import "shared/object/project/header";
+  @import "shared/object/project/footer";
 
-  &.-search{
-    @include r-sprite($icon-search);
-  }
 
-  &.-browser{
-    @include r-sprite($icon-browser);
-  }
+  // -----------------------------------------------------------------
+  // Utility
+  // -----------------------------------------------------------------
+  @import "shared/object/utility/space";
+  @import "shared/object/utility/inner-space";
+  @import "shared/object/utility/line-height";
+  @import "shared/object/utility/text";
 
-  &.-diamond{
-    @include r-sprite($icon-diamond);
-  }
-}
 
+
+
+//test code
 .flex{
   display: flex;
   border: 1px solid;
@@ -62,4 +50,5 @@ body {
     flex-basis: 50%;
   }
 }
+
 

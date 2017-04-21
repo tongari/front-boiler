@@ -1,0 +1,79 @@
+---
+layout: default.html
+pageTitle: ページタイトルっす
+jsSrc:
+ - <script type="text/javascript" src="./js/app.js" charset="utf-8"></script>
+ - <script type="text/javascript" src="./js/main.js" charset="utf-8"></script>
+---
+
+  <main class="u-inner-space-hr-M u-inner-space-vt-M">
+    <h1 class="c-typography c-typography--XL c-typography--bold">Page title</h1>
+    <h2 class="c-typography c-typography--LL c-typography--bold">title</h2>
+    <h3 class="c-typography c-typography--L">Sub title</h3>
+    <hr>
+
+    <section class="u-space-t-XL">
+      <h2 class="c-typography c-typography--LL c-typography--bold">
+        一括で子要素にマージントップをつける
+      </h2>
+      <p>※最初の子要素にはマージンは付与されない</p>
+
+      <div class="c-group c-group--M" style="background-color: rgba(0,0,0,.2);">
+        <ul class="c-group c-group--XS">
+          <li class="u-space-t-XS">テキスト</li>
+          <li><i class="c-icon c-icon--search"></i></li>
+          <li>テキスト</li>
+        </ul>
+
+        <div style="background-color: rgba(200,0,0,.2); padding-left: 15px;">
+          <ul class="c-group c-group--XL">
+            <li class="u-space-t-XS">入れ子可能</li>
+            <li><i class="c-icon c-icon--search"></i></li>
+            <li>テキスト</li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="u-space-t-XL">
+      <h2 class="c-typography c-typography--LL c-typography--bold">
+        ボタン
+      </h2>
+      <nav>
+        <ul class="c-group c-group--M">
+          <li>
+            <a href="#" class="c-btn c-btn--default">default</a>
+          </li>
+          <li>
+            <a href="#" class="c-btn c-btn--primary">primary</a>
+          </li>
+          <li>
+            <a href="#" class="c-btn c-btn--secondary">secondary</a>
+          </li>
+          <li>
+            <a href="#" class="c-btn c-btn--default c-btn--block">default</a>
+          </li>
+          <li>
+            <a href="#" class="c-btn c-btn--primary c-btn--block">primary</a>
+          </li>
+        </ul>
+      </nav>
+    </section>
+
+    <hr>
+
+    <section class="u-space-t-XL">
+      <h2 class="c-typography c-typography--LL c-typography--bold">アイコン</h2>
+      <i class="c-icon c-icon--search"></i>
+      <i class="c-icon c-icon--browser"></i>
+      <i class="c-icon c-icon--diamond"></i>
+    </section>
+
+
+
+    <div class="flex">
+      <div class="flex__half" style="background-color: rgba(255,0,0,.2);">aaaaa</div>
+      <div class="flex__half" style="background-color: rgba(0,0,255,.2);">bbbbb</div>
+    </div>
+  </main>

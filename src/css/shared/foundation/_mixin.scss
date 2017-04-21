@@ -1,0 +1,32 @@
+/*----------------------------------
+Mixin
+----------------------------------*/
+
+/**
+Retina Sze Sprite
+ */
+@mixin f-sprite-width($sprite){
+  width: nth($sprite,5)/2;
+}
+
+@mixin f-sprite-height($sprite){
+  height: nth($sprite,6)/2;
+}
+
+@mixin f-sprite-position($sprite){
+  $sprite-offset-x: nth($sprite,3)/2;
+  $sprite-offset-y: nth($sprite,4)/2;
+  background-position: $sprite-offset-x $sprite-offset-y;
+}
+
+@mixin f-sprite-size($sprite){
+  background-size: nth($sprite,7)/2 nth($sprite,8)/2;
+}
+
+@mixin f-sprite($sprite){
+  @include sprite-image($sprite);
+  @include f-sprite-position($sprite);
+  @include f-sprite-width($sprite);
+  @include f-sprite-height($sprite);
+  @include f-sprite-size($sprite);
+}

@@ -1,0 +1,21 @@
+.u-line-height {
+
+  &-XS {
+    line-height: $f-line-height-XS;
+  }
+  &-S {
+    line-height: $f-line-height-S;
+  }
+  &-M {
+    line-height: $f-line-height-M;
+  }
+  &-L {
+    line-height: $f-line-height-L;
+  }
+  &-LL {
+    line-height: $f-line-height-LL;
+  }
+  &-XL {
+    line-height: $f-line-height-XL;
+  }
+}

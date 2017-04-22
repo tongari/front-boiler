@@ -1,18 +1,30 @@
 @import "../../sprite/typeA/sprite";
 
-.c-icon {
+@mixin iconBase(){
   display: inline-block;
   vertical-align: middle;
+}
 
-  &#{&}--search{
+.c-icon {
+
+  //&#{&}--search{
+  &-search{
+    @include iconBase();
     @include f-sprite($icon-search);
   }
 
-  &#{&}--browser{
+  &-browser{
+    @include iconBase();
     @include f-sprite($icon-browser);
   }
 
-  &#{&}--diamond{
+  &-diamond{
+    @include iconBase();
     @include f-sprite($icon-diamond);
+  }
+
+  &-arrow{
+    @include iconBase();
+    @include f-sprite($icon-link-arrow-black-16x26);
   }
 }

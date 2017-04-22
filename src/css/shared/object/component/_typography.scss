@@ -1,37 +1,38 @@
-.c-typography {
 
-  &#{&}--XS {
-    font-size: $f-font-size-XS;
-    line-height: $f-line-height-XS;
+.c-typo {
+
+  //&#{&}--XL {
+  &-Lv1 {
+    font-size: $f-font-size-XL;
+    line-height: $f-line-height-XL;
+    font-weight: bold;
   }
 
-  &#{&}--S {
-    font-size: $f-font-size-S;
-    line-height: $f-line-height-S;
+  &-Lv2 {
+    font-size: $f-font-size-LL;
+    line-height: $f-line-height-LL;
+    font-weight: bold;
   }
 
-  //&#{&}--M {
-  //  font-size: $f-font-size-M;
-  //  line-height: $f-line-height-M;
-  //}
-
-  &#{&}--L {
+  &-Lv3 {
     font-size: $f-font-size-L;
     line-height: $f-line-height-L;
   }
 
-  &#{&}--LL {
-    font-size: $f-font-size-LL;
-    line-height: $f-line-height-LL;
+  &-Lv4 {
+    font-size: $f-font-size-M;
+    line-height: $f-line-height-M;
   }
 
-  &#{&}--XL {
-    font-size: $f-font-size-XL;
-    line-height: $f-line-height-XL;
+  &-Lv5 {
+    font-size: $f-font-size-S;
+    line-height: $f-line-height-S;
   }
 
-  &#{&}--bold {
-    font-weight: bold;
+
+  &-Lv6 {
+    font-size: $f-font-size-XS;
+    line-height: $f-line-height-XS;
   }
 
 }

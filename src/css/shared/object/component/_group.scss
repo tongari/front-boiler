@@ -5,34 +5,35 @@
     margin-top: $size;
 
     &:first-child{
-      margin-top: inherit;
+      margin-top: 0;
     }
   }
 }
 
 .c-group {
 
-  &#{&}--XS{
+  //&#{&}--XS{
+  &-XS{
     @include firstChildMargin($f-margin-XS);
   }
 
-  &#{&}--S{
+  &-S{
     @include firstChildMargin($f-margin-S);
   }
 
-  &#{&}--M{
+  &-M{
     @include firstChildMargin($f-margin-M);
   }
 
-  &#{&}--L{
+  &-L{
     @include firstChildMargin($f-margin-L);
   }
 
-  &#{&}--LL{
+  &-LL{
     @include firstChildMargin($f-margin-LL);
   }
 
-  &#{&}--XL{
+  &-XL{
     @include firstChildMargin($f-margin-XL);
   }
 

@@ -108,7 +108,10 @@ gulp.task('server', () => {
     server: {
       baseDir: PATH.dist
     },
-    port: 9000
+    port: 9000,
+    ghostMode:{
+      scroll: false
+    }
   })
 })
 
@@ -181,7 +184,7 @@ gulp.task('sprite', () => {
     files.map( (entry) => {
       const spritePath = `${entry}/*.{png,jpg,gif}`;
       const imgName = entry.replace('./src/assets/','').replace('sprite','sprite.png');
-      const cssName = entry.replace('./src/assets','css').replace('/sprite','/_sprite.scss');
+      const cssName = entry.replace('/sprite','/_sprite.scss').replace('./src/assets','css/shared/sprite');
       const imgPath = `${entry.replace('./src/assets','/sprite')}.png?${Date.now()}`;
       const spriteStream = gulp.src(spritePath).pipe(plumber()).pipe(spritesmith({
         imgName: imgName,

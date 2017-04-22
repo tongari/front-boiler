@@ -17,7 +17,7 @@ fieldset, form, label, legend,
 table, caption, tbody, tfoot, thead, tr, th, td,
 article, aside, canvas, details, figcaption, figure,
 footer, header,  menu, nav, section, summary,
-time, mark, audio, video {
+time, mark, audio, video, main {
   margin:0;
   padding:0;
   border:0;
@@ -32,7 +32,7 @@ body {
 }
 
 article,aside,details,figcaption,figure,
-footer,header,menu,nav,section {
+footer,header,menu,nav,section, main {
   display:block;
 }
 

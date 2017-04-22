@@ -1,0 +1,45 @@
+.c-media-list{
+  &__body {
+    display: block;
+    padding: 16px;
+  }
+
+  &.-border{
+    .c-media-list__item {
+      border-top: 1px solid #ccc;
+
+      &:last-child{
+        border-bottom: 1px solid #ccc;
+      }
+    }
+  }
+
+}
+
+.c-media{
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+
+  > * {
+    display: table-cell;
+  }
+
+  &.-top{
+    > *  {
+      vertical-align: top;
+    }
+  }
+
+  &.-middle{
+    > *  {
+      vertical-align: middle;
+    }
+  }
+
+  &.-bottom{
+    > *  {
+      vertical-align: bottom;
+    }
+  }
+}

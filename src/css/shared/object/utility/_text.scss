@@ -19,14 +19,6 @@
     font-size: $f-font-size-XL;
   }
 
-  &-underline {
-    text-decoration: underline;
-  }
-
-  &-bold {
-    font-weight: bold;
-  }
-
   &-left {
     text-align: left;
   }
@@ -35,5 +27,17 @@
   }
   &-right {
     text-align: right;
+  }
+}
+
+.u{
+  &-bold {
+    font-weight: bold;
+  }
+  &-normal{
+    font-weight: normal;
+  }
+  &-underline {
+    text-decoration: underline;
   }
 }

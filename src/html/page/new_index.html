@@ -2,60 +2,109 @@
 layout: default.html
 pageTitle: ページタイトルっす
 jsSrc:
- - <script type="text/javascript" src="./js/app.js" charset="utf-8"></script>
- - <script type="text/javascript" src="./js/main.js" charset="utf-8"></script>
+- <script type="text/javascript" src="./js/app.js" charset="utf-8"></script>
+- <script type="text/javascript" src="./js/main.js" charset="utf-8"></script>
 ---
 
-  <main class="u-inner-space-hr-M u-inner-space-vt-M">
-    <h1 class="c-typography c-typography--XL c-typography--bold">Page title</h1>
-    <h2 class="c-typography c-typography--LL c-typography--bold">title</h2>
-    <h3 class="c-typography c-typography--L">Sub title</h3>
+  <main>
+    <div class="u-inner-space-hr-M u-inner-space-vt-XL">
+    <h1 class="c-typo-Lv1">Page title</h1>
+    <h2 class="c-typo-Lv2">title</h2>
+    <h3 class="c-typo-Lv3">Sub title</h3>
+    <h4 class="c-typo-Lv4">Lv4</h4>
+    <h5 class="c-typo-Lv5">Lv5</h5>
+    <h6 class="c-typo-Lv6">Lv6</h6>
     <hr>
 
     <section class="u-space-t-XL">
-      <h2 class="c-typography c-typography--LL c-typography--bold">
+      <h2 class="c-typo-Lv2">
         一括で子要素にマージントップをつける
       </h2>
       <p>※最初の子要素にはマージンは付与されない</p>
 
-      <div class="c-group c-group--M" style="background-color: rgba(0,0,0,.2);">
-        <ul class="c-group c-group--XS">
-          <li class="u-space-t-XS">テキスト</li>
-          <li><i class="c-icon c-icon--search"></i></li>
-          <li>テキスト</li>
-        </ul>
+      <div class="c-group-M" style="background-color: rgba(0,0,0,.2);">
+        <div class="u-space-t-XS" style="border: 1px solid;">テキスト</div>
+        <div style="border: 1px solid;"><i class="c-icon-search"></i></div>
+        <div style="border: 1px solid;">テキスト</div>
 
-        <div style="background-color: rgba(200,0,0,.2); padding-left: 15px;">
-          <ul class="c-group c-group--XL">
-            <li class="u-space-t-XS">入れ子可能</li>
-            <li><i class="c-icon c-icon--search"></i></li>
-            <li>テキスト</li>
-          </ul>
+        <div class="c-group-XL" style="background-color: rgba(200,0,0,.2); padding-left: 15px;">
+          <div class="u-space-t-XS u-inner-space-r-S">入れ子可能</div>
+          <div style="border: 1px solid;"><i class="c-icon-search"></i></div>
+          <div style="border: 1px solid;">テキスト</div>
         </div>
 
       </div>
     </section>
 
     <section class="u-space-t-XL">
-      <h2 class="c-typography c-typography--LL c-typography--bold">
+      <h2 class="c-typo-Lv2">
         ボタン
       </h2>
       <nav>
-        <ul class="c-group c-group--M">
+        <ul class="c-group-M">
           <li>
-            <a href="#" class="c-btn c-btn--default">default</a>
+            <a href="#" class="c-btn-default">default</a>
           </li>
           <li>
-            <a href="#" class="c-btn c-btn--primary">primary</a>
+            <a href="#" class="c-btn-primary">primary</a>
           </li>
           <li>
-            <a href="#" class="c-btn c-btn--secondary">secondary</a>
+            <a href="#" class="c-btn-secondary">secondary</a>
           </li>
           <li>
-            <a href="#" class="c-btn c-btn--default c-btn--block">default</a>
+            <a href="#" class="c-btn-default u-block">default</a>
           </li>
           <li>
-            <a href="#" class="c-btn c-btn--primary c-btn--block">primary</a>
+            <a href="#" class="c-btn-primary u-block">primary</a>
+          </li>
+
+          <li>
+            <a href="#" class="c-btn-default u-block">
+              <div class="c-btn-default__icon-center">
+                <i class="c-icon-arrow"></i><span class="c-btn-default__icon-center-text">default</span>
+              </div>
+            </a>
+          </li>
+
+          <li>
+            <a href="#" class="c-btn-default u-block">
+              <div class="c-row-fit -middle">
+                <p class="c-btn-default__icon-right-text">default</p>
+                <div class="c-col-solid c-btn-default__icon-right-box">
+                  <i class="c-icon-arrow"></i>
+                </div>
+              </div>
+            </a>
+          </li>
+
+          <li>
+            <a href="#" class="c-btn-default u-block">
+              <div class="c-row-fit -middle">
+                <div class="c-col-solid c-btn-default__icon-left-box">
+                  <i class="c-icon-arrow"></i>
+                </div>
+                <p class="c-btn-default__icon-left-text">default</p>
+              </div>
+            </a>
+          </li>
+
+          <li class="c-group-M">
+            <a href="#" class="c-btn-default u-inline-block">
+              <div class="c-row-fit -middle">
+                <p>default</p>
+                <div class="c-col-solid c-btn-default__icon-right-box">
+                  <i class="c-icon-arrow"></i>
+                </div>
+              </div>
+            </a>
+            <a href="#" class="c-btn-default u-inline-block">
+              <div class="c-row-fit -middle">
+                <div class="c-col-solid c-btn-default__icon-left-box">
+                  <i class="c-icon-arrow"></i>
+                </div>
+                <p>default</p>
+              </div>
+            </a>
           </li>
         </ul>
       </nav>
@@ -64,16 +113,194 @@ jsSrc:
     <hr>
 
     <section class="u-space-t-XL">
-      <h2 class="c-typography c-typography--LL c-typography--bold">アイコン</h2>
-      <i class="c-icon c-icon--search"></i>
-      <i class="c-icon c-icon--browser"></i>
-      <i class="c-icon c-icon--diamond"></i>
+      <h2 class="c-typo-Lv2 u-normal">アイコン</h2>
+      <i class="c-icon-search"></i>
+      <i class="c-icon-browser"></i>
+      <i class="c-icon-diamond"></i>
     </section>
 
+    <hr>
+
+    <section>
+      <h2 class="c-typo-Lv2 u-normal">grid</h2>
+      <div class="c-grid c-group-M">
+        <div class="c-row">
+          <div class="c-col-4" style="background-color: rgba(255,0,0,.2);">aaaaa</div>
+          <div class="c-col-4" style="background-color: rgba(0,255,0,.2);">bbbbb</div>
+          <div class="c-col-4" style="background-color: rgba(0,0,255,.2);">ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc</div>
+        </div>
+
+        <div class="c-row -middle">
+          <div class="c-col-4" style="background-color: rgba(255,0,0,.2);">aaaaa</div>
+          <div class="c-col-4" style="background-color: rgba(0,255,0,.2);">bbbbb</div>
+          <div class="c-col-4" style="background-color: rgba(0,0,255,.2);">ccccccccccccc cccccccccccccccc ccccccccccc cccccccccccccc ccccccccccccccc cccccccccccccccc</div>
+        </div>
+
+        <div class="c-row -bottom">
+          <div class="c-col-4" style="background-color: rgba(0,255,0,.2);">bbbbb</div>
+          <div class="c-col-4" style="background-color: rgba(0,0,255,.2);">ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc</div>
+        </div>
+
+        <div class="c-row">
+          <div class="c-col-4 c-col-offset-4" style="background-color: rgba(0,255,0,.2);">bbbbb</div>
+          <div class="c-col-4" style="background-color: rgba(0,0,255,.2);">ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc</div>
+        </div>
+
+        <div class="c-row">
+          <div class="c-col-4"><img src="//placehold.jp/800x800.png" alt=""></div>
+          <div class="c-col-4" style="background-color: rgba(0,255,0,.2);">bbbbb</div>
+          <div class="c-col-4" style="background-color: rgba(0,0,255,.2);">cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc</div>
+        </div>
+
+        <div class="c-row -gutter-M">
+          <div class="c-col-4"><img src="//placehold.jp/800x800.png" alt=""></div>
+          <div class="c-col-4" style="background-color: rgba(0,255,0,.2);">bbbbb</div>
+          <div class="c-col-4" style="background-color: rgba(0,0,255,.2);">cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc</div>
+        </div>
+
+        <div class="c-row -gutter-M">
+          <div class="c-col-6">
+            <div class="w100">
+              <img src="//placehold.jp/800x800.png" alt="">
+            </div>
+          </div>
+          <div class="c-col-6" style="background-color: rgba(0,0,255,.2);">ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc</div>
+        </div>
+
+        <div class="c-row u-text-center">
+          <div class="c-col-2">
+            <i class="c-icon-browser"></i>
+          </div>
+          <div class="c-col-2">
+            <i class="c-icon-browser"></i>
+          </div>
+          <div class="c-col-2">
+            <i class="c-icon-browser"></i>
+          </div>
+          <div class="c-col-2">
+            <i class="c-icon-browser"></i>
+          </div>
+          <div class="c-col-2">
+            <i class="c-icon-browser"></i>
+          </div>
+          <div class="c-col-2">
+            <i class="c-icon-browser"></i>
+          </div>
+
+        </div>
 
 
-    <div class="flex">
-      <div class="flex__half" style="background-color: rgba(255,0,0,.2);">aaaaa</div>
-      <div class="flex__half" style="background-color: rgba(0,0,255,.2);">bbbbb</div>
-    </div>
+
+          <a href="#" class="c-row-fit -middle -between -gutter-XS">
+            <div class="c-col-solid w50">
+              <img src="//placehold.jp/800x800.png" alt="">
+            </div>
+            <p>aaaaaavaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
+            <div class="c-col-solid w8">
+              <i class="c-icon-arrow"></i>
+            </div>
+          </a>
+
+
+
+        <div class="c-row-fit -middle -gutter-XS">
+          <div class="c-col-solid w100">
+            <img src="//placehold.jp/800x800.png" alt="">
+          </div>
+          <div style="background-color: rgba(0,255,0,.2);">
+              <div class="c-row-fit -gutter-XS -middle">
+                <p class="c-col-solid w20" style="background-color:rgba(255,0,0,.2);">xxxx</p>
+                <p style="background-color:rgba(255,0,0,.2);">yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy</p>
+                <div class="c-col-solid w50">
+                  <img src="//placehold.jp/800x800.png" alt="">
+                </div>
+              </div>
+          </div>
+          <div style="background-color: rgba(0,0,255,.2);">ccccccccccccccccccccccccccccccccccccccccccc</div>
+        </div>
+
+      </div>
+
+    </section>
+
+  </div>
+
+    <setciion class="u-inner-space-vt-M">
+      <h2>media</h2>
+      <ul class="c-media-list -border">
+        <li class="c-media-list__item">
+          <a href="#" class="c-media-list__body">
+            <div class="c-media -middle">
+              <div class="w50">
+                <img src="//placehold.jp/800x800.png" alt="">
+              </div>
+              <p class="u-inner-space-hr-XS">aaaaaavaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
+            </div>
+          </a>
+        </li>
+        <li class="c-media-list__item">
+          <a href="#" class="c-media-list__body">
+            <div class="c-media -middle">
+              <div class="w50">
+                <img src="//placehold.jp/800x800.png" alt="">
+              </div>
+              <p class="u-inner-space-hr-XS">aaaaaavaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
+            </div>
+          </a>
+        </li>
+        <li class="c-media-list__item">
+          <a href="#" class="c-media-list__body">
+            <div class="c-media -middle">
+              <div class="w50">
+                <img src="//placehold.jp/800x800.png" alt="">
+              </div>
+              <p class="u-inner-space-hr-XS">aaaaaavaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
+              <div class="w8">
+                <i class="c-icon-arrow"></i>
+              </div>
+            </div>
+          </a>
+        </li>
+        <li class="c-media-list__item">
+          <a href="#" class="c-media-list__body">
+            <div class="c-media -middle">
+              <div class="w50">
+                <img src="//placehold.jp/800x800.png" alt="">
+              </div>
+              <div class="u-inner-space-hr-XS">
+                <div class="c-row-fit -gutter-XS -middle">
+                  <p class="c-col-solid w20" style="background-color:rgba(255,0,0,.2);">xxxx</p>
+                  <p style="background-color:rgba(255,0,0,.2);">yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy</p>
+                  <div class="c-col-solid w20">
+                    <img src="//placehold.jp/800x800.png" alt="">
+                  </div>
+                </div>
+              </div>
+              <div class="w8">
+                <i class="c-icon-arrow"></i>
+              </div>
+            </div>
+          </a>
+        </li>
+        <li class="c-media-list__item">
+          <a href="#" class="c-media-list__body">
+            <div class="c-media -middle">
+              <div class="w50">
+                <img src="//placehold.jp/800x800.png" alt="">
+              </div>
+              <div class="u-inner-space-hr-XS">
+                <p class="u-inline-block">aaaaaa</p>
+                <p class="u-inline-block">bbbbb</p>
+                <p class="u-inline-block">ccccc</p>
+              </div>
+              <div class="w8">
+                <i class="c-icon-arrow"></i>
+              </div>
+            </div>
+          </a>
+        </li>
+      </ul>
+    </setciion>
+
+
   </main>

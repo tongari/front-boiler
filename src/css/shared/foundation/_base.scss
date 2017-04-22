@@ -16,6 +16,8 @@ body{
   font-size: $f-font-size-M;
   text-size-adjust: 100%;
   line-height: $f-line-height-M;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 
   //&.lang-en{
   //  font-size: $f-font-size-M;
@@ -35,4 +37,9 @@ a{
 
 h1, h2, h3, h4, h5, h6,strong {
   font-weight: normal;
+}
+
+img{
+  width: 100%;
+  vertical-align: top;
 }

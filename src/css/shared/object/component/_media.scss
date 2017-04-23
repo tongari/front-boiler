@@ -1,7 +1,7 @@
 .c-media-list{
   &__body {
     display: block;
-    padding: 16px;
+    padding: $f-margin-M;
   }
 
   &.-border{
@@ -21,10 +21,6 @@
   width: 100%;
   table-layout: fixed;
 
-  > * {
-    display: table-cell;
-  }
-
   &.-top{
     > *  {
       vertical-align: top;
@@ -42,4 +38,20 @@
       vertical-align: bottom;
     }
   }
+
+  > * {
+    display: table-cell;
+
+    &.self-top{
+      vertical-align: top;
+    }
+    &.self-middle{
+      vertical-align: middle;
+    }
+    &.self-bottom{
+      vertical-align: bottom;
+    }
+  }
+
+
 }

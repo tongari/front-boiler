@@ -1,6 +1,7 @@
 @mixin btnBase(){
   position: relative;
   display: inline-block;
+  max-width: 100%;
   border-radius: 4px;
   padding: $f-margin-S $f-margin-M;
   line-height: 1;

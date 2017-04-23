@@ -21,6 +21,24 @@ $splitCol : 12;
     align-items: stretch;
   }
 
+  > * {
+    &.self-top{
+      align-self: flex-start;
+    }
+
+    &.self-middle{
+      align-self: center;
+    }
+
+    &.self-bottom{
+      align-self: flex-end;
+    }
+
+    &.self-stretch{
+      align-self: stretch;
+    }
+  }
+
   &.-gutter-XS{
     margin-left: -1* $f-margin-XS * 0.5;
     margin-right: -1* $f-margin-XS * 0.5;

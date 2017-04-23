@@ -20,11 +20,12 @@
 
   @import "shared/object/component/icon";
   @import "shared/object/component/typography";
-  @import "shared/object/component/group";
   @import "shared/object/component/button";
-  @import "shared/object/component/grid";
+  @import "shared/object/component/group";
+  @import "shared/object/component/area";
   @import "shared/object/component/media";
-
+  @import "shared/object/component/box";
+  @import "shared/object/component/grid";
 
   // -----------------------------------------------------------------
   // Project
@@ -42,26 +43,3 @@
   @import "shared/object/utility/text";
   @import "shared/object/utility/display";
   @import "shared/object/utility/position";
-
-
-.w8{
-  width: 8px;
-}
-
-.w20{
-  width: 20px;
-}
-
-.w32{
-  width: 32px;
-}
-
-.w50{
-  width: 50px;
-}
-
-.w100{
-  width: 100px;
-}
-
-

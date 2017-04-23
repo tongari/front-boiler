@@ -1,0 +1,9 @@
+.c-box{
+
+  @for $i from 1 through 40 {
+    &-#{$i*8}{
+      width: #{$i*8}px;
+    }
+  }
+
+}

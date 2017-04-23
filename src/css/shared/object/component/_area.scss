@@ -1,0 +1,17 @@
+.c-area{
+  &__item{
+    .-border & {
+      border-top: 1px solid #ccc;
+
+      &:last-child{
+        border-bottom: 1px solid #ccc;
+      }
+    }
+  }
+
+  &__body {
+    display: block;
+    padding: $f-margin-M;
+  }
+
+}

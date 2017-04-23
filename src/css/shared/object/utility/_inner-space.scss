@@ -2,27 +2,33 @@
 
   //padding vertical
   &-vt-XS{
-    padding: $f-margin-XS;
+    padding-top: $f-margin-XS;
+    padding-bottom: $f-margin-XS;
   }
 
   &-vt-S{
-    padding: $f-margin-S;
+    padding-top: $f-margin-S;
+    padding-bottom: $f-margin-S;
   }
 
   &-vt-M{
-    padding: $f-margin-M;
+    padding-top: $f-margin-M;
+    padding-bottom: $f-margin-M;
   }
 
   &-vt-L {
-    padding: $f-margin-L;
+    padding-top: $f-margin-L;
+    padding-bottom: $f-margin-L;
   }
 
   &-vt-LL {
-    padding: $f-margin-LL;
+    padding-top: $f-margin-LL;
+    padding-bottom: $f-margin-LL;
   }
 
   &-vt-XL {
-    padding: $f-margin-XL;
+    padding-top: $f-margin-XL;
+    padding-bottom: $f-margin-XL;
   }
 
   //padding horizontal

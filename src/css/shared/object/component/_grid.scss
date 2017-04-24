@@ -21,6 +21,7 @@ $splitCol : 12;
     align-items: stretch;
   }
 
+  //not working android 4.1 and 4.2
   > * {
     &.self-top{
       align-self: flex-start;
@@ -97,6 +98,7 @@ $splitCol : 12;
 
 .c-row {
   display: flex;
+  position: relative;
 
   @for $i from 1 through $splitCol {
     > .c-col-#{$i} {
@@ -114,6 +116,7 @@ $splitCol : 12;
 
 .c-row-fit{
   display: flex;
+  position: relative;
 
   > *{
     min-width: .1rem;

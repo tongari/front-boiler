@@ -5,43 +5,4 @@
       width: #{$i*8}px;
     }
   }
-
-  &-pos {
-
-    &-lt{
-      position: absolute;
-      top: 0;
-      left: 0;
-    }
-
-    &-lm {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      left: 0;
-    }
-    &-lb {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-    }
-    &-rt {
-      position: absolute;
-      top: 0;
-      right: 0;
-    }
-    &-rm {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      right: 0;
-    }
-    &-rb {
-      position: absolute;
-      bottom: 0;
-      right: 0;
-    }
-
-  }
-
 }

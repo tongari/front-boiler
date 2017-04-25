@@ -1,8 +1,47 @@
-.u-{
+.u {
   &-relative {
     position: relative;
   }
   &-absolute{
     position: absolute;
   }
+
+  &-abs-pos {
+
+    &-LT{
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+
+    &-LM {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      left: 0;
+    }
+    &-LB {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+    }
+    &-RT {
+      position: absolute;
+      top: 0;
+      right: 0;
+    }
+    &-RM {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      right: 0;
+    }
+    &-RB {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+    }
+
+  }
+
 }

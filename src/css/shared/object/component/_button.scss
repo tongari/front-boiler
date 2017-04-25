@@ -1,26 +1,98 @@
 /*
 ---
-name: base button
-category: shared/object/component/_button
+name: button
+category:
+  - shared/object/component/_button
 ---
 
-## This is base button
+# ボタン
 
-   * Base button style.
-   * Use `a` or `button` tag.
+`<a> タグ または <button> タグ で使用してください。`
 
+<br>
+<br>
+
+## default button
 ```html
 <a href="#" class="c-btn-default">default</a>
+<br>
+<br>
+<a href="#" class="c-btn-default u-block">default</a>
 ```
 
-## This is primary button
-
-   * Base primary style.
-   * Use `a` or `button` tag.
-
-
+## primary button
 ```html
 <a href="#" class="c-btn-primary">primary</a>
+<br>
+<br>
+<a href="#" class="c-btn-primary u-block">primary</a>
+```
+
+## secondary button
+```html
+<a href="#" class="c-btn-secondary">secondary</a>
+<br>
+<br>
+<a href="#" class="c-btn-secondary u-block">secondary</a>
+```
+
+## アイコン付きボタン(中央寄せで幅は親サイズに依存)
+```html
+<a href="#" class="c-btn-default u-block">
+  <div class="c-btn-default__icon-center">
+    <i class="c-icon-arrow"></i><span class="c-btn-default__icon-center-text">default</span>
+  </div>
+</a>
+```
+
+## アイコン付きボタン(左アイコンで幅は親サイズに依存)
+```html
+<a href="#" class="c-btn-default u-block">
+  <div class="c-row-fit -middle">
+    <div class="c-col-solid c-btn-default__icon-left-box">
+      <i class="c-icon-arrow"></i>
+    </div>
+    <p class="c-btn-default__icon-left-text">default</p>
+  </div>
+</a>
+```
+
+## アイコン付きボタン(右アイコンで幅は親サイズに依存)
+```html
+<a href="#" class="c-btn-default u-block">
+  <div class="c-row-fit -middle">
+    <p>default</p>
+    <div class="c-col-solid c-btn-default__icon-right-box">
+      <i class="c-icon-arrow"></i>
+    </div>
+  </div>
+</a>
+```
+
+
+## アイコン付きボタン(左アイコンで幅は中身に依存)
+```html
+<a href="#" class="c-btn-default u-inline-block">
+  <div class="c-row-fit -middle">
+    <div class="c-col-solid c-btn-default__icon-left-box">
+      <i class="c-icon-arrow"></i>
+    </div>
+    <p>default</p>
+  </div>
+</a>
+```
+
+
+## アイコン付きボタン(右アイコンで幅は中身に依存)
+```html
+<a href="#" class="c-btn-default u-inline-block">
+  <div class="c-row-fit -middle">
+    <p>default</p>
+    <div class="c-col-solid c-btn-default__icon-right-box">
+      <i class="c-icon-arrow"></i>
+    </div>
+  </div>
+</a>
 ```
 
 */

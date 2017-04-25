@@ -1,16 +1,36 @@
 /*
 ---
 name: icon
-category: shared/object/component/_icon
+category:
+ - shared/object/component/_icon
 ---
 
-## This is icons
-   * Base icon style.
-   * Use `i` tag.
+# アイコン一覧
 
+`サイズは○x○と○x○と○x○の３種類`
+
+`<i> タグ で使用してください。`
+
+`dropshadow等もサイズ内に納めてください。`
+
+<br>
+<br>
+
+##  searchアイコン
 ```html
 <i class="c-icon-search"></i>
 ```
+
+##  browserアイコン
+```html
+<i class="c-icon-browser"></i>
+```
+
+##  arrowアイコン
+```html
+<i class="c-icon-arrow"></i>
+```
+
 */
 
 

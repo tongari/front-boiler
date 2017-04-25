@@ -1,4 +1,35 @@
+/*
+---
+name: group
+category:
+ - shared/object/component/_group
+---
 
+# グルーピング
+
+`一括で子要素にマージントップを付与する。`
+
+`※最初の子要素にはマージンは付与されない。`
+
+`style属性はダミーです。`
+
+```html
+<div class="c-group-M" style="background-color: rgba(0,0,0,.2);">
+
+  <div style="border: 1px solid;">テキスト</div>
+  <div style="border: 1px solid;"><i class="c-icon-search"></i></div>
+  <div style="border: 1px solid;">テキスト</div>
+
+  <div class="c-group-XL" style="background-color: rgba(200,0,0,.2); padding-left: 30px;">
+    <div>入れ子可能</div>
+    <div style="border: 1px solid;"><i class="c-icon-search"></i></div>
+    <div style="border: 1px solid;">テキスト</div>
+  </div>
+
+</div>
+```
+
+*/
 
 @mixin firstChildMargin($size){
   > * {

@@ -15,6 +15,7 @@ import metalsmithLayout from 'metalsmith-layouts';
 import sass from 'gulp-sass';
 import spritesmith from 'gulp.spritesmith';
 import cssnano from 'gulp-cssnano';
+import aigis from 'gulp-aigis';
 
 import webpack from 'webpack';
 import webpackStream from 'webpack-stream';
@@ -98,7 +99,8 @@ gulp.task('css', () => {
   }))
   .pipe(gulpif(isDev(), sourcemaps.write('.')))
   .pipe(gulp.dest(`${PATH.dist}/css`))
-  .pipe(gulpif(isDev(),browserSync.stream()))
+  .pipe(gulpif(isDev(), gulp.dest(`${PATH.dist}/styleguide/css`)))
+  .pipe(gulpif(isDev(), browserSync.stream()))
   // .pipe(sucessNotifier());
 });
 
@@ -206,11 +208,16 @@ gulp.task('copy', () => {
     .pipe(gulp.dest(`${PATH.dist}/sprite`))
 });
 
+gulp.task("styleguide", () => {
+  gulp.src("./aigis_config.yml")
+    .pipe(aigis());
+});
+
 
 // dev
-gulp.task('dev',['server', 'copy', 'html', 'css', 'eslint', 'js'], () => {
+gulp.task('dev',['server', 'styleguide', 'copy', 'html', 'css', 'eslint', 'js'], () => {
   gulp.watch(PATH.html, ['html']);
-  gulp.watch(PATH.css, ['css']);
+  gulp.watch(PATH.css, ['css', 'styleguide']);
   gulp.watch([PATH.js], ['eslint', 'js']);
 });
 

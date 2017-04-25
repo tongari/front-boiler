@@ -1,3 +1,166 @@
+/*
+---
+name: grid
+category:
+ - shared/object/component/_grid
+---
+
+# Gridレイアウト（12分割）
+
+`bootstrap / Flexbox Grid を参考にして作成しております。`
+
+`style属性はダミーです。`
+
+<br>
+<br>
+
+##  シンプルなGrid
+```html
+<!-- 確認用 -->
+<div class="c-row">
+  <div class="c-col-4" style="background-color: rgba(255,0,0,.2);">aaaaa</div>
+  <div class="c-col-4" style="background-color: rgba(0,255,0,.2);">bbbbb</div>
+  <div class="c-col-4" style="background-color: rgba(0,0,255,.2);">ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc</div>
+</div>
+
+<br>
+<br>
+
+<div class="c-row">
+  <div class="c-col-8" style="background-color: rgba(255,0,0,.2);">aaaaa</div>
+  <div class="c-col-2" style="background-color: rgba(0,255,0,.2);">bbbbb</div>
+  <div class="c-col-2" style="background-color: rgba(0,0,255,.2);">ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc</div>
+</div>
+
+<br>
+<br>
+
+<!-- オリジナル -->
+<div class="c-row">
+  <div class="c-col-4">aaaaa</div>
+  <div class="c-col-4">bbbbb</div>
+  <div class="c-col-4">ccccc</div>
+</div>
+
+```
+
+##  ガター付きGrid
+```html
+<!-- 確認用 -->
+<div class="c-row -gutter-M">
+  <div class="c-col-4" style="background-color: rgba(255,0,0,.2);">aaaaa</div>
+  <div class="c-col-4" style="background-color: rgba(0,255,0,.2);">bbbbb</div>
+  <div class="c-col-4" style="background-color: rgba(0,0,255,.2);">ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc</div>
+</div>
+
+<br>
+<br>
+
+<!-- オリジナル -->
+<div class="c-row -gutter-M">
+  <div class="c-col-4">aaaaa</div>
+  <div class="c-col-4">bbbbb</div>
+  <div class="c-col-4">ccccc</div>
+</div>
+
+```
+
+##  offset
+```html
+<!-- 確認用 -->
+<div class="c-row">
+  <div class="c-col-4 c-col-offset-4" style="background-color: rgba(0,255,0,.2);"><p>bbbbb</p></div>
+  <div class="c-col-4" style="background-color: rgba(0,0,255,.2);">ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc</div>
+</div>
+
+<br>
+<br>
+
+<!-- オリジナル -->
+<div class="c-row">
+  <div class="c-col-4 c-col-offset-4"><p>bbbbb</p></div>
+  <div class="c-col-4">cccc</div>
+</div>
+
+```
+
+## 縦ラインの制御
+```html
+<div class="c-row -top">
+  <div class="c-col-4" style="background-color: rgba(255,0,0,.2);">aaaaa</div>
+  <div class="c-col-4" style="background-color: rgba(0,255,0,.2);">bbbbb</div>
+  <div class="c-col-4" style="background-color: rgba(0,0,255,.2);">ccccccccccccc cccccccccccccccc ccccccccccc cccccccccccccc ccccccccccccccc cccccccccccccccc</div>
+</div>
+
+<br>
+<br>
+
+<div class="c-row -middle">
+  <div class="c-col-4" style="background-color: rgba(255,0,0,.2);">aaaaa</div>
+  <div class="c-col-4" style="background-color: rgba(0,255,0,.2);">bbbbb</div>
+  <div class="c-col-4" style="background-color: rgba(0,0,255,.2);">ccccccccccccc cccccccccccccccc ccccccccccc cccccccccccccc ccccccccccccccc cccccccccccccccc</div>
+</div>
+
+<br>
+<br>
+
+<div class="c-row -bottom">
+  <div class="c-col-4" style="background-color: rgba(255,0,0,.2);">aaaaa</div>
+  <div class="c-col-4" style="background-color: rgba(0,255,0,.2);">bbbbb</div>
+  <div class="c-col-4" style="background-color: rgba(0,0,255,.2);">ccccccccccccc cccccccccccccccc ccccccccccc cccccccccccccc ccccccccccccccc cccccccccccccccc</div>
+</div>
+```
+
+## Gridレイアウト内に固定の要素を配置したサンプル例
+```html
+<div class="c-row u-text-center">
+  <div class="c-col-2">
+    <i class="c-icon-browser"></i>
+  </div>
+  <div class="c-col-2">
+    <i class="c-icon-browser"></i>
+  </div>
+  <div class="c-col-2">
+    <i class="c-icon-browser"></i>
+  </div>
+  <div class="c-col-2">
+    <i class="c-icon-browser"></i>
+  </div>
+  <div class="c-col-2">
+    <i class="c-icon-browser"></i>
+  </div>
+  <div class="c-col-2">
+    <i class="c-icon-browser"></i>
+  </div>
+</div>
+```
+
+## 固定サイズと自動サイズが入り混じったサンプル例
+```html
+<div class="c-row-fit -middle -gutter-XS">
+  <div class="c-col-solid c-box-96">
+    <img src="//placehold.jp/800x800.png" alt="">
+  </div>
+  <div style="background-color: rgba(0,255,0,.2);">
+      <div class="c-row-fit -gutter-XS -middle">
+        <p class="c-col-solid c-box-24" style="background-color:rgba(255,0,0,.2);">xxxx</p>
+        <p style="background-color:rgba(255,0,0,.2);">yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy</p>
+        <div class="c-col-solid c-box-48">
+          <img src="//placehold.jp/800x800.png" alt="">
+        </div>
+      </div>
+  </div>
+  <div style="background-color: rgba(0,0,255,.2);">ccccccccccccccccccccccccccccccccccccccccccc</div>
+</div>
+```
+
+*/
+
+
+
+
+
+
 $splitCol : 12;
 
 @function calcCol($i) {

@@ -1,3 +1,19 @@
+/*
+---
+name: icon
+category: shared/object/component/_icon
+---
+
+## This is icons
+   * Base icon style.
+   * Use `i` tag.
+
+```html
+<i class="c-icon-search"></i>
+```
+*/
+
+
 @import "../../sprite/typeA/sprite";
 
 @mixin iconBase(){

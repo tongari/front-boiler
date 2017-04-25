@@ -1,3 +1,30 @@
+/*
+---
+name: base button
+category: shared/object/component/_button
+---
+
+## This is base button
+
+   * Base button style.
+   * Use `a` or `button` tag.
+
+```html
+<a href="#" class="c-btn-default">default</a>
+```
+
+## This is primary button
+
+   * Base primary style.
+   * Use `a` or `button` tag.
+
+
+```html
+<a href="#" class="c-btn-primary">primary</a>
+```
+
+*/
+
 @mixin btnBase(){
   position: relative;
   display: inline-block;

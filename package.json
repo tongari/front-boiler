@@ -38,6 +38,7 @@
     "gulp-sourcemaps": "^2.6.0",
     "gulp.spritesmith": "^6.4.0",
     "metalsmith-layouts": "^1.8.0",
+    "node-aigis": "^1.4.0",
     "run-sequence": "^1.2.2",
     "webpack": "^2.4.1",
     "webpack-stream": "^3.2.0"

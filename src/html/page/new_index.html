@@ -2,6 +2,7 @@
 layout: default.html
 pageTitle: ページタイトル！
 jsSrc:
+- <script src="https://unpkg.com/vue"></script>
 - <script type="text/javascript" src="./js/app.js" charset="utf-8"></script>
 - <script type="text/javascript" src="./js/main.js" charset="utf-8"></script>
 ---
@@ -22,12 +23,12 @@ jsSrc:
       </h2>
       <p>※最初の子要素にはマージンは付与されない</p>
 
-      <div class="c-group-M" style="background-color: rgba(0,0,0,.2);">
+      <div class="c-group -space-M" style="background-color: rgba(0,0,0,.2);">
         <div class="u-space-t-XS" style="border: 1px solid;">テキスト</div>
         <div style="border: 1px solid;"><i class="c-icon-search"></i></div>
         <div style="border: 1px solid;">テキスト</div>
 
-        <div class="c-group-XL" style="background-color: rgba(200,0,0,.2); padding-left: 15px;">
+        <div class="c-group -space-XL" style="background-color: rgba(200,0,0,.2); padding-left: 15px;">
           <div class="u-space-t-XS u-inner-space-r-S">入れ子可能</div>
           <div style="border: 1px solid;"><i class="c-icon-search"></i></div>
           <div style="border: 1px solid;">テキスト</div>
@@ -41,7 +42,7 @@ jsSrc:
         ボタン
       </h2>
       <nav>
-        <ul class="c-group-M">
+        <ul class="c-group -space-M">
           <li>
             <a href="#" class="c-btn-default">defaultdefaultdefaultdefaultdefaultdefaultdefaultdefaultdefaultdefault</a>
           </li>
@@ -89,7 +90,7 @@ jsSrc:
             </a>
           </li>
 
-          <li class="c-group-M">
+          <li class="c-group -space-M">
             <a href="#" class="c-btn-default u-inline-block">
               <div class="c-row-fit -middle">
                 <p>defaultdefaultdefaultdefaultdefaultdefaultdefaultdefaultdefaultdefaultdefaultdefaultdefaultdefaultdefault</p>
@@ -124,7 +125,7 @@ jsSrc:
 
     <section>
       <h2 class="c-typo-Lv2 u-normal">grid</h2>
-      <div class="c-grid c-group-M">
+      <div class="c-grid c-group -space-M">
         <div class="c-row">
           <div class="c-col-4" style="background-color: rgba(255,0,0,.2);">aaaaa</div>
           <div class="c-col-4" style="background-color: rgba(0,255,0,.2);">bbbbb</div>
@@ -228,25 +229,25 @@ jsSrc:
 
     <section class="u-inner-space-vt-M">
 
-      <h2 class="c-typo-Lv2">area</h2>
-      <div class="c-area -border">
-        <div class="c-area__item">
-          <a href="#" class="c-area__body">hogehoeghgeoghaohg</a>
+      <h2 class="c-typo-Lv2">borderを一括付与</h2>
+      <div class="c-group -border">
+        <div>
+          <a href="#" class="c-group__body">hogehoeghgeoghaohg</a>
         </div>
-        <div class="c-area__item">
-          <a href="#" class="c-area__body">hogehoeghgeoghaohg</a>
+        <div>
+          <a href="#" class="c-group__body">hogehoeghgeoghaohg</a>
         </div>
-        <div class="c-area__item">
-          <a href="#" class="c-area__body">hogehoeghgeoghaohg</a>
+        <div>
+          <a href="#" class="c-group__body">hogehoeghgeoghaohg</a>
         </div>
       </div>
     </section>
 
     <section class="u-inner-space-vt-M">
       <h2 class="c-typo-Lv2">media</h2>
-      <ul class="c-area -border">
-        <li class="c-area__item">
-          <a href="#" class="c-area__body">
+      <ul class="c-group -border">
+        <li>
+          <a href="#" class="c-group__body">
             <div class="c-row-fit -middle">
               <div class="c-col-solid c-box-48">
                 <img src="//placehold.jp/800x800.png" alt="">
@@ -255,8 +256,8 @@ jsSrc:
             </div>
           </a>
         </li>
-        <li class="c-area__item">
-          <a href="#" class="c-area__body">
+        <li>
+          <a href="#" class="c-group__body">
             <div class="c-row-fit -middle">
               <div class="c-col-solid c-box-48">
                 <img src="//placehold.jp/800x800.png" alt="">
@@ -268,8 +269,8 @@ jsSrc:
             </div>
           </a>
         </li>
-        <li class="c-area__item">
-          <a href="#" class="c-area__body">
+        <li>
+          <a href="#" class="c-group__body">
             <div class="c-row-fit">
               <div class="c-col-solid c-box-48">
                 <img src="//placehold.jp/800x800.png" alt="">
@@ -281,8 +282,8 @@ jsSrc:
             </div>
           </a>
         </li>
-        <li class="c-area__item">
-          <a href="#" class="c-area__body">
+        <li>
+          <a href="#" class="c-group__body">
             <div class="c-row-fit">
               <div class="c-col-solid c-box-8">
                 <i class="c-icon-arrow u-abs-pos-LM"></i>
@@ -294,8 +295,8 @@ jsSrc:
             </div>
           </a>
         </li>
-        <li class="c-area__item">
-          <a href="#" class="c-area__body">
+        <li>
+          <a href="#" class="c-group__body">
             <div class="c-row-fit -middle">
               <div class="c-col-solid c-box-48">
                 <img src="//placehold.jp/800x800.png" alt="">
@@ -315,8 +316,8 @@ jsSrc:
             </div>
           </a>
         </li>
-        <li class="c-area__item">
-          <a href="#" class="c-area__body">
+        <li>
+          <a href="#" class="c-group__body">
             <div class="c-row-fit -middle">
               <div class="c-col-solid c-box-48">
                 <img src="http://placehold.jp/800x800.png" alt="">

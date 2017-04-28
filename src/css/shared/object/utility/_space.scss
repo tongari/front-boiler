@@ -1,3 +1,105 @@
+/*
+---
+name: space
+category:
+ - shared/object/utility/_space
+---
+
+# marginを付与するユーティリティ
+
+<style>
+<!--
+table{
+  border-width: thin;
+  border-style: solid;
+  border-color: #ccc;
+}
+td,th{
+  padding: 5px;
+  border-width: thin;
+  border-style: solid;
+  border-color: #ccc;
+}
+//-->
+</style>
+
+<br>
+<table>
+  <tr>
+    <th>サイズ名</th>
+    <th>マージンサイズ</th>
+  </tr>
+  <tr>
+    <td>XS</td>
+    <td>8px</td>
+  </tr>
+  <tr>
+    <td>S</td>
+    <td>12px</td>
+  </tr>
+  <tr>
+    <td>M</td>
+    <td>16px</td>
+  </tr>
+  <tr>
+    <td>L</td>
+    <td>20px</td>
+  </tr>
+  <tr>
+    <td>LL</td>
+    <td>24px</td>
+  </tr>
+  <tr>
+    <td>XL</td>
+    <td>32px</td>
+  </tr>
+</table>
+
+<br>
+<br>
+
+
+##  上にmarginを付与
+```html
+<div style="border:1px solid;">
+  <p class="u-space-t-XL">
+    <span style="border:1px solid #f00;">上にmarginが32px（XLサイズ）</span>
+  </p>
+</div>
+```
+
+##  下にmarginを付与
+```html
+<div style="border:1px solid;">
+  <p class="u-space-b-XL">
+    <span style="border:1px solid #f00;">下にmarginが32px（XLサイズ）</span>
+  </p>
+</div>
+
+```
+
+##  左にmarginを付与
+```html
+<div style="border:1px solid;">
+  <p class="u-space-l-XL">
+    <span style="border:1px solid #f00;">左にmarginが32px（XLサイズ）</span>
+  </p>
+</div>
+
+```
+
+##  右にmarginを付与
+```html
+<div style="border:1px solid; text-align: right;">
+  <p class="u-space-r-XL">
+    <span style="border:1px solid #f00;">右にmarginが32px（XLサイズ）</span>
+  </p>
+</div>
+
+```
+
+*/
+
 .u-space {
 
   //margin-top

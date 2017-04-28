@@ -1,3 +1,87 @@
+/*
+---
+name: text
+category:
+ - shared/object/utility/_text
+---
+
+# textのユーティリティ
+
+<style>
+<!--
+table{
+  border-width: thin;
+  border-style: solid;
+  border-color: #ccc;
+}
+td,th{
+  padding: 5px;
+  border-width: thin;
+  border-style: solid;
+  border-color: #ccc;
+}
+//-->
+</style>
+
+<br>
+<table>
+  <tr>
+    <th>サイズ名</th>
+    <th>フォントサイズ</th>
+  </tr>
+  <tr>
+    <td>XS</td>
+    <td>1.0rem（10px）</td>
+  </tr>
+  <tr>
+    <td>S</td>
+    <td>1.2rem（12px）</td>
+  </tr>
+  <tr>
+    <td>M</td>
+    <td>1.4rem（14px）</td>
+  </tr>
+  <tr>
+    <td>L</td>
+    <td>1.6rem（16px）</td>
+  </tr>
+  <tr>
+    <td>LL</td>
+    <td>1.8rem（18px）</td>
+  </tr>
+  <tr>
+    <td>XL</td>
+    <td>2.0rem（20px）</td>
+  </tr>
+</table>
+
+
+<br>
+<br>
+
+##  フォントサイズ 2.0rem（20px）
+```html
+<p class="u-text-size-XL">フォントサイズ 2.0rem（20px）</p>
+```
+
+##  テキスト左寄せ
+```html
+<p class="u-text-left">テキスト左寄せ</p>
+```
+
+##  テキスト中央寄せ
+```html
+<p class="u-text-center">テキスト中央寄せ</p>
+```
+
+##  テキスト右寄せ
+```html
+<p class="u-text-right">テキスト右寄せ</p>
+```
+
+
+*/
+
 .u-text {
 
   &-size-XS {

@@ -1,3 +1,71 @@
+/*
+---
+name: position
+category:
+ - shared/object/utility/_position
+---
+
+# positionのユーティリティ
+
+<br>
+<br>
+
+## position : relative;
+```html
+<span class="u-relative">position : relative;</span>
+```
+
+## position : absolute;
+```html
+<div class="u-relative" style="height:30px;">
+  <span class="u-absolute">position : absolute;</span>
+</div>
+```
+
+## absoluteで左上配置
+```html
+<div class="u-relative" style="height:60px;">
+  <span class="u-abs-pos-LT">左上配置</span>
+</div>
+```
+
+## absoluteで左中央配置
+```html
+<div class="u-relative" style="height:60px;">
+  <span class="u-abs-pos-LM">左中央配置</span>
+</div>
+```
+
+## absoluteで左下配置
+```html
+<div class="u-relative" style="height:60px;">
+  <span class="u-abs-pos-LB">左下配置</span>
+</div>
+```
+
+## absoluteで右上配置
+```html
+<div class="u-relative" style="height:60px;">
+  <span class="u-abs-pos-RT">右上配置</span>
+</div>
+```
+
+## absoluteで右中央配置
+```html
+<div class="u-relative" style="height:60px;">
+  <span class="u-abs-pos-RM">右中央配置</span>
+</div>
+```
+
+## absoluteで右下配置
+```html
+<div class="u-relative" style="height:60px;">
+  <span class="u-abs-pos-RB">右下配置</span>
+</div>
+```
+
+*/
+
 .u {
   &-relative {
     position: relative;

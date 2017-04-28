@@ -1,3 +1,32 @@
+/*
+---
+name: display
+category:
+ - shared/object/utility/_display
+---
+
+# displayのユーティリティ
+
+<br>
+<br>
+
+##  display : block;
+```html
+<span class="u-block" style="border:1px solid;">spanタグなのにブロックになるよ</span>
+```
+
+##  display : inline-block;
+```html
+<p class="u-inline-block" style="border:1px solid;">pタグなのにインラインブロックになるよ</p>
+```
+
+##  display: inline
+```html
+<p class="u-inline-block" style="border:1px solid;">pタグなのにインラインになるよ</p>
+```
+
+*/
+
 .u {
   &-block{
     display: block;

@@ -14,13 +14,13 @@ category:
 `style属性はダミーです。`
 
 ```html
-<div class="c-group-M" style="background-color: rgba(0,0,0,.2);">
+<div class="c-group -space-M" style="background-color: rgba(0,0,0,.2);">
 
   <div style="border: 1px solid;">テキスト</div>
   <div style="border: 1px solid;"><i class="c-icon-search"></i></div>
   <div style="border: 1px solid;">テキスト</div>
 
-  <div class="c-group-XL" style="background-color: rgba(200,0,0,.2); padding-left: 30px;">
+  <div class="c-group -space-XL" style="background-color: rgba(200,0,0,.2); padding-left: 30px;">
     <div>入れ子可能</div>
     <div style="border: 1px solid;"><i class="c-icon-search"></i></div>
     <div style="border: 1px solid;">テキスト</div>
@@ -28,6 +28,144 @@ category:
 
 </div>
 ```
+
+##  ボーダ付与
+
+```html
+<div class="c-group -border" style="background-color:#fff;">
+  <div>
+    <a href="#" class="c-group__body">hogehoeghgeoghaohg</a>
+  </div>
+  <div>
+    <a href="#" class="c-group__body">hogehoeghgeoghaohg</a>
+  </div>
+  <div>
+    <a href="#" class="c-group__body">hogehoeghgeoghaohg</a>
+  </div>
+</div>
+```
+
+## groupとgridを組み合わせmediaパターン
+
+```html
+<ul class="c-group -border" style="background-color:#fff;">
+
+  <li>
+    <a href="#" class="c-group__body">
+      <div class="c-row-fit -middle">
+        <div class="c-col-solid c-box-48">
+          <img src="//placehold.jp/800x800.png" alt="">
+        </div>
+        <p class="u-inner-space-hr-M">aaaaaavaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
+      </div>
+    </a>
+  </li>
+
+</ul>
+```
+
+```html
+<ul class="c-group -border" style="background-color:#fff;">
+  <li>
+    <a href="#" class="c-group__body">
+      <div class="c-row-fit -middle">
+        <div class="c-col-solid c-box-48">
+          <img src="//placehold.jp/800x800.png" alt="">
+        </div>
+        <p class="u-inner-space-hr-M">aaaaaavaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
+        <div class="c-col-solid c-box-8">
+          <i class="c-icon-arrow"></i>
+        </div>
+      </div>
+    </a>
+  </li>
+</ul>
+```
+
+```html
+<ul class="c-group -border" style="background-color:#fff;">
+  <li>
+    <a href="#" class="c-group__body">
+      <div class="c-row-fit">
+        <div class="c-col-solid c-box-48">
+          <img src="//placehold.jp/800x800.png" alt="">
+        </div>
+        <p class="u-inner-space-hr-M">aaaaaavaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaavaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaavaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaavaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaavaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaavaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
+        <div class="c-col-solid c-box-8">
+          <i class="c-icon-arrow u-abs-pos-RM"></i>
+        </div>
+      </div>
+    </a>
+  </li>
+</ul>
+```
+
+```html
+<ul class="c-group -border" style="background-color:#fff;">
+  <li>
+    <a href="#" class="c-group__body">
+      <div class="c-row-fit">
+        <div class="c-col-solid c-box-8">
+          <i class="c-icon-arrow u-abs-pos-LM"></i>
+        </div>
+        <p class="u-inner-space-hr-M">aaaaaavaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaavaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaavaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaavaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaavaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaavaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
+        <div class="c-col-solid c-box-48">
+          <img src="//placehold.jp/800x800.png" alt="">
+        </div>
+      </div>
+    </a>
+  </li>
+</ul>
+```
+
+```html
+<ul class="c-group -border" style="background-color:#fff;">
+  <li>
+    <a href="#" class="c-group__body">
+      <div class="c-row-fit -middle">
+        <div class="c-col-solid c-box-48">
+          <img src="//placehold.jp/800x800.png" alt="">
+        </div>
+        <div class="u-inner-space-hr-M">
+          <div class="c-row-fit -gutter-XS -middle">
+            <p class="c-col-solid c-box-24" style="background-color:rgba(255,0,0,.2);">xxxx</p>
+            <p style="background-color:rgba(255,0,0,.2);">yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy</p>
+            <div class="c-col-solid c-box-24">
+              <img src="//placehold.jp/800x800.png" alt="">
+            </div>
+          </div>
+        </div>
+        <div class="c-col-solid c-box-8">
+          <i class="c-icon-arrow u-abs-pos-RM"></i>
+        </div>
+      </div>
+    </a>
+  </li>
+</ul>
+```
+
+```html
+<ul class="c-group -border" style="background-color:#fff;">
+  <li>
+    <a href="#" class="c-group__body">
+      <div class="c-row-fit -middle">
+        <div class="c-col-solid c-box-48">
+          <img src="http://placehold.jp/800x800.png" alt="">
+        </div>
+        <div class="u-inner-space-hr-M">
+          <p class="u-inline-block u-space-b-XS">aaaaaa</p>
+          <p class="u-inline-block u-space-b-XS">bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb</p>
+          <p class="u-inline-block u-space-b-XS">ccccc</p>
+        </div>
+        <div class="c-col-solid c-box-8">
+          <i class="c-icon-arrow u-abs-pos-RM"></i>
+        </div>
+      </div>
+    </a>
+  </li>
+</ul>
+```
+
 
 */
 
@@ -43,28 +181,43 @@ category:
 
 .c-group {
 
+  &.-border  {
+    > * {
+      border-top: 1px solid #ccc;
+      &:last-child{
+        border-bottom: 1px solid #ccc;
+      }
+    }
+  }
+
+  &__body {
+    display: block;
+    padding: $f-margin-M;
+  }
+
+
   //&#{&}--XS{
-  &-XS{
+  &.-space-XS{
     @include firstChildMargin($f-margin-XS);
   }
 
-  &-S{
+  &.-space-S{
     @include firstChildMargin($f-margin-S);
   }
 
-  &-M{
+  &.-space-M{
     @include firstChildMargin($f-margin-M);
   }
 
-  &-L{
+  &.-space-L{
     @include firstChildMargin($f-margin-L);
   }
 
-  &-LL{
+  &.-space-LL{
     @include firstChildMargin($f-margin-LL);
   }
 
-  &-XL{
+  &.-space-XL{
     @include firstChildMargin($f-margin-XL);
   }
 

@@ -1,3 +1,124 @@
+/*
+---
+name: inner-space
+category:
+ - shared/object/utility/_inner-space
+---
+
+# paddingを付与するユーティリティ
+
+<style>
+<!--
+table{
+  border-width: thin;
+  border-style: solid;
+  border-color: #ccc;
+}
+td,th{
+  padding: 5px;
+  border-width: thin;
+  border-style: solid;
+  border-color: #ccc;
+}
+//-->
+</style>
+
+<br>
+<table>
+  <tr>
+    <th>サイズ名</th>
+    <th>パティングサイズ</th>
+  </tr>
+  <tr>
+    <td>XS</td>
+    <td>8px</td>
+  </tr>
+  <tr>
+    <td>S</td>
+    <td>12px</td>
+  </tr>
+  <tr>
+    <td>M</td>
+    <td>16px</td>
+  </tr>
+  <tr>
+    <td>L</td>
+    <td>20px</td>
+  </tr>
+  <tr>
+    <td>LL</td>
+    <td>24px</td>
+  </tr>
+  <tr>
+    <td>XL</td>
+    <td>32px</td>
+  </tr>
+</table>
+
+<br>
+<br>
+
+##  上下にpaddingを付与
+```html
+<div style="border:1px solid;">
+  <p class="u-inner-space-vt-M">
+    <span style="border:1px solid #f00;">上下にpaddingが16px（Mサイズ）</span>
+  </p>
+</div>
+
+```
+
+##  左右にpaddingを付与
+```html
+<div style="border:1px solid;">
+  <p class="u-inner-space-hr-XL">
+    <span style="border:1px solid #f00;">左右にpaddingが32px（XLサイズ）</span>
+  </p>
+</div>
+
+```
+
+##  上にpaddingを付与
+```html
+<div style="border:1px solid;">
+  <p class="u-inner-space-t-XL">
+    <span style="border:1px solid #f00;">上にpaddingが32px（XLサイズ）</span>
+  </p>
+</div>
+```
+
+##  下にpaddingを付与
+```html
+<div style="border:1px solid;">
+  <p class="u-inner-space-b-XL">
+    <span style="border:1px solid #f00;">下にpaddingが32px（XLサイズ）</span>
+  </p>
+</div>
+
+```
+
+##  左にpaddingを付与
+```html
+<div style="border:1px solid;">
+  <p class="u-inner-space-l-XL">
+    <span style="border:1px solid #f00;">左にpaddingが32px（XLサイズ）</span>
+  </p>
+</div>
+
+```
+
+##  右にpaddingを付与
+```html
+<div style="border:1px solid; text-align: right;">
+  <p class="u-inner-space-r-XL">
+    <span style="border:1px solid #f00;">右にpaddingが32px（XLサイズ）</span>
+  </p>
+</div>
+
+```
+
+*/
+
 .u-inner-space {
 
   //padding vertical

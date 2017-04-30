@@ -48,9 +48,15 @@ category:
 ```html
 <!-- 確認用 -->
 <div class="c-row -gutter-M">
-  <div class="c-col-4" style="background-color: rgba(255,0,0,.2);">aaaaa</div>
-  <div class="c-col-4" style="background-color: rgba(0,255,0,.2);">bbbbb</div>
-  <div class="c-col-4" style="background-color: rgba(0,0,255,.2);">ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc</div>
+  <div class="c-col-4">
+    <p style="background-color: rgba(255,0,0,.2);">aaaaa</p>
+  </div>
+  <div class="c-col-4">
+    <p style="background-color: rgba(0,255,0,.2);">bbbbb</p>
+  </div>
+  <div class="c-col-4">
+    <p style="background-color: rgba(0,0,255,.2);">ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc</p>
+  </div>
 </div>
 
 <br>

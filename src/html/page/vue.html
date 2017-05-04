@@ -2,26 +2,179 @@
 layout: default.html
 pageTitle: ページタイトル！
 jsSrc:
-- <script src="https://unpkg.com/vue"></script>
 - <script type="text/javascript" src="./js/app.js" charset="utf-8"></script>
 ---
 
+<style>
+  <!--
+
+  .VueCarousel-inner{
+    display: -webkit-box;
+    display: flex;
+  }
+  -->
+</style>
+
   <main>
+    <span id="page-top"></span>
+
+    <div class="v-carousel">
+      <carousel :autoplay="true" :autoplay-timeout="5000" :per-page="1">
+        <slide class="js-slide-item">
+          <div style="height: 150px; background-color: rgba(255,0,0,.3)"></div>
+        </slide>
+        <slide class="js-slide-item">
+          <div style="height: 150px; background-color:rgba(0,255,0,.3)"></div>
+        </slide>
+        <slide class="js-slide-item">
+          <div style="height: 150px; background-color:rgba(0,0,255,.3)"></div>
+        </slide>
+        <slide class="js-slide-item">
+          <div style="height: 150px; background-color:rgba(0,0,0,.3)"></div>
+        </slide>
+      </carousel>
+    </div>
 
     <div id="app">
       {{ message }}
     </div>
+    <hr>
 
     <div id="app-2">
-      <span v-bind:title="message">
+      <span :title="message">
         Hover your mouse over me for a few seconds
         to see my dynamically bound title!
       </span>
     </div>
+    <hr>
 
     <div id="app-3">
       <p v-if="seen">Now you see me</p>
       <p v-if="!seen">Tongari</p>
     </div>
+    <hr>
+
+    <div id="app-4">
+      <ol>
+        <li v-for="todo in todos">
+          {{ todo.text }}
+        </li>
+      </ol>
+    </div>
+    <hr>
+
+    <div id="app-5">
+      <p>{{ message }}</p>
+      <button @click="reverseMessage">Reverse Message</button>
+    </div>
+    <hr>
+
+    <div id="app-6">
+      <p>{{ message }}</p>
+      <input v-model="message">
+    </div>
+    <hr>
+
+    <div id="app-7">
+      <ol>
+        <!-- todo オブジェクトによって各 todo-item を提供します。それは、内容を動的にできるように表します。-->
+        <todo-item v-for="item in groceryList" :todo="item"></todo-item>
+      </ol>
+    </div>
+
+    <hr>
+
+    <div class="js-common-function">
+      <a href="http://yahoo.co.jp" target="_blank" data-measurement="hoge_1" @click="tracker">hoge_1</a>
+      <a href="#" data-measurement="hoge_2" @click.prevent="tracker">hoge_2</a>
+    </div>
+
+    <hr>
+
+    <div id="example">
+      <p>Original message: "{{ message }}"</p>
+      <p>Computed reversed message: "{{ reversedMessage }}"</p>
+    </div>
+
+    <hr>
+
+    <p class="static" :class="{ active: isActive, 'text-danger': hasError }">class toggle</p>
+
+    <hr>
+
+    <p :class="classObject" id="classObject">classObject</p>
+
+    <hr>
+
+    <p :class="classObject" id="classObject2">class computed</p>
+
+    <hr>
+
+    <p :class="[activeClass, errorClass]" id="arrayKoubun">配列構文</p>
+
+    <hr>
+
+    <a href="#" :class="bindClass" @click.prevent="toggle" id="toggleClass">bindClass</a>
+
+    <hr>
+
+    <style>
+      <!--
+      .is-hidden{
+        display: none;
+      }
+      -->
+    </style>
+
+    <div id="js-tab-area" class="c-grid c-group -space-M">
+      <nav>
+        <ul class="c-row -gutter-M">
+          <li class="c-col-4">
+            <a href="#" class="c-btn-default u-block js-nav" @click.prevent="change">A</a>
+          </li>
+          <li class="c-col-4">
+            <a href="#" class="c-btn-default u-block js-nav" @click.prevent="change">B</a>
+          </li>
+          <li class="c-col-4">
+            <a href="#" class="c-btn-default u-block js-nav" @click.prevent="change">C</a>
+          </li>
+        </ul>
+      </nav>
+      <ul class="c-row -gutter-M u-text-center">
+        <li class="c-col-12 tab-a js-content">A</li>
+        <li class="c-col-12 tab-b is-hidden js-content">B</li>
+        <li class="c-col-12 tab-c is-hidden js-content">C</li>
+      </ul>
+    </div>
+
+    <hr>
+    <div id="IF">
+      <h1 v-if="ok">Yes</h1>
+      <h1 v-else>No</h1>
+    </div>
+
+    <hr>
+    <div id="TIF">
+      <template v-if="ok">
+        <h1>Title OK</h1>
+        <p>Paragraph OK</p>
+      </template>
+      <template v-else>
+        <h1>Title NO</h1>
+        <p>Paragraph NO</p>
+      </template>
+      <h1 v-show="ok">Hello!</h1>
+    </div>
+
+    <hr>
+
+    <div id="tongari"></div>
+
+    <hr>
+
+    <div id="to-page-top" id="hoge">
+      <a href="#" @click.prevent="toPageTop()">to page top</a>
+    </div>
+
 
   </main>

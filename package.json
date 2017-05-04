@@ -41,6 +41,9 @@
     "gulp.spritesmith": "^6.4.0",
     "metalsmith-layouts": "^1.8.0",
     "run-sequence": "^1.2.2",
+    "vue": "^2.3.2",
+    "vue-carousel": "^0.6.4",
+    "vue-smoothscroll": "^0.1.1",
     "webpack": "^2.4.1",
     "webpack-stream": "^3.2.0"
   }

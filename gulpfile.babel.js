@@ -139,13 +139,16 @@ gulp.task('js', () => {
           {
             test: /\.js$/,
             exclude: [ /node_modules/ ],
-            use: [{ loader: 'babel-loader' }]
+            use: [
+              { loader: 'babel-loader' },
+            ]
           }
         ]
       },
       resolve: {
         alias: {
-          Root: path.resolve(__dirname + '/src/js/')
+          Root: path.resolve(__dirname + '/src/js/'),
+          'vue$': 'vue/dist/vue.esm.js'
         },
       },
       devtool: 'source-map',

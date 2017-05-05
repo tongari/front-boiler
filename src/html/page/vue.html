@@ -5,18 +5,18 @@ jsSrc:
 - <script type="text/javascript" src="./js/app.js" charset="utf-8"></script>
 ---
 
-<style>
-  <!--
-
-  .VueCarousel-inner{
-    display: -webkit-box;
-    display: flex;
-  }
-  -->
-</style>
-
   <main>
     <span id="page-top"></span>
+
+    <style>
+      <!--
+
+      .VueCarousel-inner{
+        display: -webkit-box;
+        display: flex;
+      }
+      -->
+    </style>
 
     <div class="v-carousel">
       <carousel :autoplay="true" :autoplay-timeout="5000" :per-page="1">
@@ -33,6 +33,48 @@ jsSrc:
           <div style="height: 150px; background-color:rgba(0,0,0,.3)"></div>
         </slide>
       </carousel>
+    </div>
+
+    <hr>
+
+    <style>
+      <!--
+      .flipsnapWraper{
+        position: relative;
+        width: 100%;
+        overflow: hidden;
+      }
+
+      .flipsnap{
+        display: -webkit-box;
+        display: flex;
+      }
+
+      .flipsnap > *{
+        flex-shrink: 0;
+      }
+
+      -->
+    </style>
+
+    <div class="v-flipsnap flipsnapWraper">
+      <div class="flipsnap js-flipsnap">
+        <div class="js-slide-item">
+          <div style="height: 150px; background-color: rgba(255,0,0,.3)">
+            {{message}}
+          </div>
+        </div>
+        <div class="js-slide-item">
+          <div style="height: 150px; background-color:rgba(0,255,0,.3)">
+            {{message}}
+          </div>
+        </div>
+        <div class="js-slide-item">
+          <div style="height: 150px; background-color:rgba(0,0,255,.3)">
+            {{message}}
+          </div>
+        </div>
+      </div>
     </div>
 
     <div id="app">
@@ -173,7 +215,7 @@ jsSrc:
     <hr>
 
     <div id="to-page-top" id="hoge">
-      <a href="#" @click.prevent="toPageTop()">to page top</a>
+      <a href="#" @click.prevent="toPageTop()">↑ to page top</a>
     </div>
 
 

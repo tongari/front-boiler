@@ -4,6 +4,9 @@ import vueSmoothScroll from 'vue-smoothscroll';
 import VueCarousel from 'vue-carousel';
 import { Carousel, Slide } from 'vue-carousel';
 
+import Flipsnap from 'flipsnap';
+
+
 Vue.use(vueSmoothScroll);
 Vue.use(VueCarousel);
 
@@ -21,6 +24,63 @@ window.addEventListener('load', () => {
     item.style.width = document.documentElement.clientWidth+'px';
   });
 });
+
+/*slider start*/
+let flipsnap;
+let loopID = 0;
+let autoPlayDelay;
+const loop = (millisecond = 1000, callBack) => (
+  new Promise((resolve) => {
+    loopID = setTimeout(() => {
+      callBack();
+      resolve();
+    }, millisecond);
+  })
+);
+const toNext = () => {
+  if(flipsnap.hasNext()){
+    flipsnap.toNext();
+  } else {
+    flipsnap.moveToPoint(0);
+  }
+};
+const slide = ()=> {
+  toNext();
+  loop(autoPlayDelay, slide);
+};
+
+
+const initSlider = (in_autoPlayDelay = 3000) => {
+  autoPlayDelay = in_autoPlayDelay;
+  const box = document.querySelector('.js-flipsnap');
+  const slideItem = box.querySelectorAll('.js-slide-item');
+  Array.prototype.forEach.call(slideItem, (item) => {
+    item.style.width = document.documentElement.clientWidth+'px';
+  });
+  box.style.width = `${(document.documentElement.clientWidth * slideItem.length)}px`;
+  flipsnap = Flipsnap('.flipsnap');
+  loop(autoPlayDelay, slide);
+
+  flipsnap.element.addEventListener('fstouchstart', function(ev) {
+    clearTimeout(loopID);
+  }, false);
+  flipsnap.element.addEventListener('fstouchend', function(ev) {
+    loop(autoPlayDelay, slide);
+  }, false);
+};
+
+
+new Vue({
+  el: '.v-flipsnap',
+  data: {
+    message: 'FlipSnap & Vue!!',
+    autoPlayDelay: 3000
+  },
+  mounted() {
+    initSlider(this.autoPlayDelay);
+  }
+});
+/*slider end*/
 
 
 new Vue({
@@ -302,4 +362,3 @@ new Vue({
     }
   }
 });
-

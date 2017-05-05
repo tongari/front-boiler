@@ -2374,6 +2374,10 @@ flatten@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/flatten/-/flatten-1.0.2.tgz#dae46a9d78fbe25292258cc1e780a41d95c03782"
 
+flipsnap@^0.6.3:
+  version "0.6.3"
+  resolved "https://registry.yarnpkg.com/flipsnap/-/flipsnap-0.6.3.tgz#54b2603eb11d054333e0c1afb9f173d78bada11a"
+
 for-in@^1.0.1:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/for-in/-/for-in-1.0.2.tgz#81068d295a8142ec0ac726c6e2200c30fb6d5e80"

@@ -151,6 +151,7 @@ gulp.task('js', () => {
           'vue$': 'vue/dist/vue.esm.js'
         },
       },
+      // cache: true,
       devtool: 'source-map',
       plugins: [
         new webpack.optimize.UglifyJsPlugin({

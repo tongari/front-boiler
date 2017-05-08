@@ -362,3 +362,14 @@ new Vue({
     }
   }
 });
+
+
+new Vue({
+  el: '#muliti-component',
+  components: {
+    'my-component': {
+      props: ['text'],
+      template: '<span>{{text}}</span>'
+    }
+  }
+});

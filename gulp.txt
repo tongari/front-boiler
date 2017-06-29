@@ -1,0 +1,326 @@
+import gulp from 'gulp';
+import plumber from 'gulp-plumber';
+import gulpif from 'gulp-if';
+import notify from 'gulp-notify';
+import path from 'path';
+import glob from 'glob';
+import browserSync from 'browser-sync';
+import sourcemaps from'gulp-sourcemaps';
+import runSequence from 'run-sequence';
+
+import metalsmith from 'gulp-metalsmith';
+import metalsmithLayout from 'metalsmith-layouts';
+import inPlace from 'metalsmith-in-place';
+
+import sass from 'gulp-sass';
+import spritesmith from 'gulp.spritesmith';
+import cssnano from 'gulp-cssnano';
+import aigis from 'gulp-aigis';
+
+import webpack from 'webpack';
+import webpackStream from 'webpack-stream';
+import eslint from 'gulp-eslint';
+
+import imagemin from 'gulp-imagemin';
+import pngquant from 'imagemin-pngquant';
+
+//js entryPoinnts
+const jsBasePath = path.resolve(__dirname, './src/js/page');
+const targetsPath = glob.sync(`${jsBasePath}/*.js`);
+const jsEntryPoints = {};
+
+targetsPath.forEach(value => {
+  const replacePath = new RegExp(`${jsBasePath}/`);
+  const key = value.replace(replacePath, '').toLowerCase();
+  jsEntryPoints[`page/${key}`] = value;
+})
+
+const PATH = {
+  src: './src',
+  html: './src/html/**/*.html',
+  css: './src/css/**/*.scss',
+  js: './src/js/**/**.js',
+  vue: './src/js/**/**.vue',
+  sprite: './src/assets/**/sprite',
+  stub: './src/stub/**/*.php',
+  dist: '../dist'
+};
+
+const isDev = () => (process.env.NODE_ENV === 'dev');
+
+const sucessNotifier = () => (
+  notify({
+    title: 'build sucess!!',
+    sound: 'Submarine',
+    icon: path.join(__dirname, '/system/notifier/ok.png')
+  })
+);
+
+const failNotifier = () => (
+  notify.onError({
+    title: 'build failed!!',
+    icon: path.join(__dirname, '/system/notifier/ng.png'),
+    sound: 'Submarine',
+    messsage: "Error: <%= error.message %>",
+  })
+);
+
+const esLintWarning = () => {
+  return notify({
+    title: 'eslint Warning!!',
+    sound: 'Submarine',
+    icon: path.join(__dirname, '/system/notifier/caution.png')
+  })
+};
+
+
+//html
+gulp.task('html', () => {
+ gulp.src('src/html/page/**/*.html')
+    .pipe(plumber({
+      errorHandler: failNotifier()
+    }))
+    .pipe(metalsmith({
+      root: './src/html/',
+      frontmatter: true,
+      use: [
+        metalsmithLayout({
+          engine: 'handlebars',
+          directory: 'layout',
+          partials: 'partial',
+          default: 'default.html',
+          pattern: '**/*.html'
+        }),
+        inPlace({
+          engine: 'handlebars',
+          directory: 'layout',
+          partials: 'partial'
+        })
+      ],
+      metadata: {
+        apiPath: isDev() ? "//localhost:9999/stub/" : './stub/'
+      },
+    }))
+    .pipe(gulp.dest(PATH.dist))
+    .pipe(gulpif(isDev(),browserSync.stream()));
+});
+
+
+//css
+gulp.task('css', () => {
+  gulp.src([PATH.css,`!${PATH.css}/**/_sprite.scss`])
+    .pipe(plumber({
+      errorHandler: failNotifier()
+    }))
+    // .pipe(gulpif(isDev(), sourcemaps.init()))
+    .pipe(sass())
+    .pipe(cssnano({
+      autoprefixer: {browsers: ['ie >= 11', 'Android >= 4.1', 'last 2 versions'], add: true},
+      zindex: false
+    }))
+    // .pipe(gulpif(isDev(), sourcemaps.write('.')))
+    .pipe(gulp.dest(`${PATH.dist}/css/sp`))
+    .pipe(gulp.dest(`${PATH.dist}/styleguide/css`))
+    .pipe(gulpif(isDev(), browserSync.stream()))
+  // .pipe(sucessNotifier());
+});
+
+//server
+gulp.task('server', () => {
+  browserSync.init({
+    server: {
+      baseDir: PATH.dist
+    },
+    port: 9000,
+    ghostMode:{
+      scroll: false
+    }
+  })
+});
+
+// js
+gulp.task('js', () => {
+
+  const pluginList = [
+    new webpack.optimize.UglifyJsPlugin({
+      sourceMap: isDev()
+    })
+  ];
+
+  if(!isDev()){
+    pluginList.push(
+      new webpack.DefinePlugin({ 'process.env': { 'NODE_ENV': '"production"' } })
+    )
+  }
+
+  gulp.src([])
+    .pipe(plumber({
+      errorHandler: failNotifier()
+    }))
+    .pipe(webpackStream({
+      // context: path.resolve(__dirname, 'src/js'),
+      entry: jsEntryPoints,
+      output: {
+        filename: '[name]'
+      },
+      watch: isDev(),
+      module: {
+        rules: [
+          {
+            test: /\.vue$/,
+            loader: 'vue-loader',
+            options: {
+              loaders: {
+                'scss': 'vue-style-loader!css-loader!sass-loader',
+                'sass': 'vue-style-loader!css-loader!sass-loader?indentedSyntax'
+              }
+            }
+          },
+          {
+            test: /\.js$/,
+            exclude: [ /node_modules/ ],
+            use: [
+              { loader: 'babel-loader' },
+            ]
+          },
+          {
+            test: /\.(png|jpg)$/,
+            use: [
+              { loader: 'url-loader?limit=8192' },
+            ]
+          }
+        ]
+      },
+      resolve: {
+        alias: {
+          Root: path.resolve(__dirname + '/src/js/'),
+          // 'vue$': 'vue/dist/vue.esm.js'
+        },
+      },
+      devtool: 'cheap-module-source-map',
+      plugins: pluginList
+    }, webpack))
+    .pipe(gulp.dest(`${PATH.dist}/js/sp`))
+    .pipe(gulpif(isDev(),browserSync.stream()))
+  // .pipe(sucessNotifier());
+});
+
+// eslint
+let isWarning = false;
+gulp.task('eslint', () => {
+  gulp.src(PATH.js)
+    .pipe(plumber({
+      errorHandler: failNotifier()
+    }))
+    .pipe(eslint())
+    .pipe(eslint.format())
+    .pipe(eslint.failAfterError())
+  // .pipe(eslint.result( (result) => {
+  //   if(result.warningCount !== 0) {
+  //     isWarning = true;
+  //   } else {
+  //     isWarning = false;
+  //   }
+  // }))
+  // .pipe( gulpif(!isDev() ,gulpif(isWarning, esLintWarning())) )
+});
+
+
+gulp.task('imagemin', ()=>{
+  return gulp.src(`${PATH.src}/sprite/**`)
+    .pipe(imagemin(
+      [pngquant({quality: '65-80', speed: 1})]
+    ))
+    .pipe(imagemin())
+    .pipe(gulp.dest(`${PATH.src}/sprite`));
+});
+
+//sprite
+gulp.task('createSprite', (callBack) => {
+
+  let count = 0;
+  glob(PATH.sprite, (err, files) => {
+    files.forEach( (entry) => {
+      const spritePath = `${entry}/*.{png,jpg,gif}`;
+      const imgName = entry.replace('./src/assets/','').replace('sprite','sprite.png');
+      const cssName = entry.replace('/sprite','/_sprite.scss').replace('./src/assets','css/shared/sprite');
+      const imgPath = `${entry.replace('./src/assets','../../img/sp/sprite')}.png?${Date.now()}`;
+      const spriteStream = gulp.src(spritePath).pipe(plumber()).pipe(spritesmith({
+        imgName: imgName,
+        cssName: cssName,
+        imgPath: imgPath,
+        algorithm: 'binary-tree',
+        cssFormat: 'scss',
+        padding: 4
+      }));
+      spriteStream.img.pipe(gulp.dest(`${PATH.src}/sprite`));
+      spriteStream.css.pipe(gulp.dest(PATH.src))
+        .on('end', () => {
+          count++;
+          if (count === files.length){
+            return callBack();
+          }
+        });
+    });
+  });
+});
+
+
+//copy sprite
+gulp.task('copy:sprite', () => {
+  return gulp.src(`${PATH.src}/sprite/**`)
+    .pipe(gulp.dest(`${PATH.dist}/img/sp/sprite`))
+});
+
+//copy stub
+gulp.task('copy:stub', () => {
+  return gulp.src(`${PATH.src}/stub/**`)
+    .pipe(gulp.dest(`${PATH.dist}/stub`))
+});
+
+
+//styleguide
+gulp.task("styleguide", () => {
+  return gulp.src("./aigis_config.yml")
+    .pipe(aigis());
+});
+
+// sprite
+gulp.task('sprite', ( callback ) => {
+  runSequence(
+    'createSprite',
+    'imagemin',
+    callback
+  );
+});
+
+// dev
+gulp.task('dev',['server', 'styleguide', 'copy:sprite', 'copy:stub', 'html', 'css', 'eslint', 'js'], () => {
+  gulp.watch(PATH.html, ['html']);
+  gulp.watch(PATH.css, ['css', 'styleguide']);
+  gulp.watch([PATH.js], ['eslint']);
+  gulp.watch(PATH.vue, ['eslint']);
+  gulp.watch(PATH.stub, ['copy:stub']);
+});
+
+// front-deploy
+gulp.task('front-deploy', ( callback ) => {
+  runSequence(
+    'styleguide',
+    'copy:sprite',
+    'copy:stub',
+    'eslint',
+    ['html', 'js', 'css'],
+    callback
+  );
+});
+
+// prod
+gulp.task('prod', ( callback ) => {
+  runSequence(
+    'copy:sprite',
+    'eslint',
+    ['html', 'js', 'css'],
+    callback
+  );
+});
